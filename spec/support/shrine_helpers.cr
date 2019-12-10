@@ -11,4 +11,8 @@ module ShrineHelpers
   def uploader(storage_key = "store")
     Shrine.new(storage_key)
   end
+
+  def attacher(**options)
+    Shrine::Attacher.new(**options)
+  end
 end
