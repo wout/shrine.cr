@@ -22,6 +22,11 @@ Spectator.describe Shrine::UploadedFile do
   let(mime_type) { nil }
   let(size) { nil }
 
+  after_each do
+    Shrine.settings.storages["cache"].as(Shrine::Storage::Memory).clear!
+    Shrine.settings.storages["store"].as(Shrine::Storage::Memory).clear!
+  end
+
   describe "#initialize" do
     it "initializes metadata if absent" do
       metadata = subject.metadata
@@ -370,7 +375,7 @@ Spectator.describe Shrine::UploadedFile do
       expect(uploaded_file.data).to eq(
         {
           "id" => id,
-          "storage" => "cache",
+          "storage_key" => "cache",
           "metadata" => metadata
         }
       )

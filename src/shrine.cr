@@ -157,6 +157,14 @@ class Shrine
       Habitat.raise_if_missing_settings!
     end
 
+    def uploaded_file(hash : Hash(String, String | Shrine::UploadedFile::MetadataType))
+      self.uploaded_file(hash.to_json)
+    end
+
+    def uploaded_file(json : String)
+      UploadedFile.from_json(json)
+    end
+
     # Prints a warning to the logger.
     def warn(message)
       Shrine.logger.warn "SHRINE WARNING: #{message}"

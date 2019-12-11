@@ -201,7 +201,15 @@ class Shrine
 
     # Returns serializable hash representation of the uploaded file.
     def data : Hash(String, String | MetadataType)
-      { "id" => id, "storage" => storage_key, "metadata" => metadata }
+      { "id" => id, "storage_key" => storage_key, "metadata" => metadata }
+    end
+
+    # Returns true if the other UploadedFile is uploaded to the same
+    # storage and it has the same #id.
+    def ==(other : UploadedFile)
+      self.class  == other.class &&
+      self.id == other.id &&
+      self.storage_key == other.storage_key
     end
 
     private def _open(**options)
