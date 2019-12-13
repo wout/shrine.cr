@@ -6,7 +6,7 @@ description: |
 authors:
   - Igor Alexandrov <igor.alexandrov@gmail.com>
 
-crystal: 0.31.1
+crystal: 0.32
 
 license: MIT
 

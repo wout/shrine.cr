@@ -23,8 +23,7 @@ Spectator.describe Shrine::UploadedFile do
   let(size) { nil }
 
   after_each do
-    Shrine.settings.storages["cache"].as(Shrine::Storage::Memory).clear!
-    Shrine.settings.storages["store"].as(Shrine::Storage::Memory).clear!
+    clear_storages
   end
 
   describe "#initialize" do
