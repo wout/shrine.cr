@@ -230,6 +230,18 @@ class Shrine
         file
       end
 
+      # If a file is attached, returns the uploaded file URL, otherwise returns
+      # nil. Any options are forwarded to the storage.
+      #
+      #     attacher.file = file
+      #     attacher.url #=> "https://..."
+      #
+      #     attacher.file = nil
+      #     attacher.url #=> nil
+      def url(**options)
+        file.try &.url(**options)
+      end
+
       # Returns whether the attachment has changed.
       #
       #     attacher.changed? #=> false

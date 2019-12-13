@@ -30,7 +30,7 @@ Spectator.describe Shrine::Attacher do
 
   describe "#assign" do
     it "attaches a file to cache" do
-      file = attacher.assign(fakeio)
+      attacher.assign(fakeio)
       expect(attacher.file.not_nil!.storage_key).to eq("cache")
     end
 
@@ -262,6 +262,244 @@ Spectator.describe Shrine::Attacher do
       attacher.promote_cached(location: "foo")
 
       expect(attacher.file.not_nil!.id).to eq("foo")
+    end
+  end
+
+  describe "#promote" do
+    it "uploads attached file to permanent storage" do
+      attacher.attach_cached(fakeio)
+      attacher.promote
+
+      expect(attacher.file.not_nil!.storage_key).to eq("store")
+      expect(attacher.file.not_nil!.exists?).to be_true
+    end
+
+    it "returns the promoted file" do
+      attacher.attach_cached(fakeio)
+      file = attacher.promote
+
+      expect(attacher.file).to eq(file)
+    end
+
+    it "allows uploading to a different storage" do
+      attacher.attach(fakeio)
+      attacher.promote(storage: "other_store")
+
+      expect(attacher.file.not_nil!.storage_key).to eq("other_store")
+      expect(attacher.file.not_nil!.exists?).to be_true
+    end
+
+    it "forwards additional options for upload" do
+      attacher.attach_cached(fakeio)
+      attacher.promote(location: "foo")
+
+      expect(attacher.file.not_nil!.id).to eq("foo")
+    end
+
+    it "doesn't change the attachment" do
+      attacher.file = attacher.upload(fakeio)
+      attacher.promote
+
+      expect(attacher.changed?).to be_false
+    end
+  end
+
+  describe "#upload" do
+    it "uploads file to permanent storage" do
+      uploaded_file = attacher.upload(fakeio)
+
+      expect(uploaded_file).to be_a(Shrine::UploadedFile)
+      expect(uploaded_file.exists?).to be_true
+      expect(uploaded_file.storage_key).to eq("store")
+    end
+
+    it "uploads file to specified storage" do
+      uploaded_file = attacher.upload(fakeio, "other_store")
+
+      expect(uploaded_file.storage_key).to eq("other_store")
+    end
+
+    it "forwards additional options" do
+      uploaded_file = attacher.upload(fakeio, metadata: { "foo" => "bar" })
+
+      expect(uploaded_file.metadata["foo"]).to eq("bar")
+    end
+  end
+
+  describe "#destroy_previous" do
+    it "deletes previous attached file" do
+      previous_file = attacher.attach(fakeio)
+      attacher.attach(fakeio)
+      attacher.destroy_previous
+
+      expect(previous_file.not_nil!.exists?).to be_false
+      expect(attacher.file.not_nil!.exists?).to be_true
+    end
+
+    it "deletes only stored files" do
+      previous_file = attacher.attach_cached(fakeio)
+      attacher.attach(fakeio)
+      attacher.destroy_previous
+
+      expect(previous_file.not_nil!.exists?).to be_true
+      expect(attacher.file.not_nil!.exists?).to be_true
+    end
+
+    it "handles previous attachment being nil" do
+      attacher.attach(fakeio)
+      attacher.destroy_previous
+
+      expect(attacher.file.not_nil!.exists?).to be_true
+    end
+
+    it "skips when attachment hasn't changed" do
+      attacher.file = attacher.upload(fakeio)
+      attacher.destroy_previous
+
+      expect(attacher.file.not_nil!.exists?).to be_true
+    end
+  end
+
+  describe "#destroy_attached" do
+    it "deletes stored file" do
+      attacher.file = Shrine.upload(fakeio, "other_store")
+      attacher.destroy_attached
+
+      expect(attacher.file.not_nil!.exists?).to be_false
+    end
+
+    it "doesn't delete cached files" do
+      attacher.file = Shrine.upload(fakeio, "cache")
+      attacher.destroy_attached
+
+      expect(attacher.file.not_nil!.exists?).to be_true
+    end
+
+    it "handles no attached file" do
+      expect { attacher.destroy_attached }.to_not raise_error
+    end
+  end
+
+  describe "#destroy" do
+    it "deletes attached file" do
+      attacher.file = attacher.upload(fakeio)
+
+      expect { attacher.destroy }.to_not raise_error
+    end
+
+    it "handles no attached file" do
+      expect { attacher.destroy }.to_not raise_error
+    end
+  end
+
+  describe "#change" do
+    it "sets the uploaded file" do
+      file = attacher.upload(fakeio)
+      attacher.change(file)
+
+      expect(attacher.file).to eq(file)
+    end
+
+    it "returns the uploaded file" do
+      file = attacher.upload(fakeio)
+
+      expect(attacher.change(file)).to eq(file)
+    end
+
+    it "marks attacher as changed" do
+      file = attacher.upload(fakeio)
+      attacher.change(file)
+
+      expect(attacher.changed?).to be_true
+    end
+
+    it "doesn't mark attacher as changed on same file" do
+      attacher.file = attacher.upload(fakeio)
+      attacher.change(attacher.file)
+
+      expect(attacher.changed?).to be_false
+    end
+  end
+
+  describe "#set" do
+    it "sets the uploaded file" do
+      file = attacher.upload(fakeio)
+      attacher.set(file)
+
+      expect(attacher.file).to eq(file)
+    end
+
+    it "returns the set file" do
+      file = attacher.upload(fakeio)
+
+      expect(attacher.set(file)).to eq(file)
+    end
+
+    it "doesn't mark attacher as changed" do
+      attacher.set attacher.upload(fakeio)
+
+      expect(attacher.changed?).to be_false
+    end
+  end
+
+  describe "#get" do
+    it "returns the attached file" do
+      attacher.attach(fakeio)
+
+      expect(attacher.get).to eq(attacher.file)
+    end
+
+    it "returns nil when no file is attached" do
+      expect(attacher.get).to be_nil
+    end
+  end
+
+  describe "#url" do
+    it "returns the attached file URL" do
+      attacher.attach(fakeio)
+
+      expect(attacher.url).to eq(attacher.file.not_nil!.url)
+    end
+
+    it "returns nil when no file is attached" do
+      expect(attacher.url).to be_nil
+    end
+  end
+
+  describe "changed?" do
+    it "returns true when the attachment has changed to another file" do
+      attacher.attach(fakeio)
+
+      expect(attacher.changed?).to be_true
+    end
+
+    it "returns true when the attachment has changed to nil" do
+      attacher.file = attacher.upload(fakeio)
+      attacher.attach(nil)
+
+      expect(attacher.changed?).to be_true
+    end
+
+    it "returns false when attachment hasn't changed" do
+      attacher.file = attacher.upload(fakeio)
+
+      expect(attacher.changed?).to be_false
+    end
+  end
+
+  describe "#attached?" do
+    it "returns true when file is attached" do
+      attacher.attach(fakeio)
+
+      expect(attacher.attached?).to be_true
+    end
+
+    it "returns false when file is not attached" do
+      expect(attacher.attached?).to be_false
+
+      attacher.attach(nil)
+
+      expect(attacher.attached?).to be_false
     end
   end
 end
