@@ -502,4 +502,112 @@ Spectator.describe Shrine::Attacher do
       expect(attacher.attached?).to be_false
     end
   end
+
+  describe "#cached?" do
+    it "returns true when attached file is present and cached" do
+      attacher.file = Shrine.upload(fakeio, "cache")
+
+      expect(attacher.cached?).to eq(true)
+    end
+
+    it "returns true when specified file is present and cached" do
+      expect(attacher.cached?(Shrine.upload(fakeio, "cache"))).to be_true
+    end
+
+    it "returns false when attached file is present and stored" do
+      attacher.file = Shrine.upload(fakeio, "store")
+
+      expect(attacher.cached?).to be_false
+    end
+
+    it "returns false when specified file is present and stored" do
+      expect(attacher.cached?(Shrine.upload(fakeio, "store"))).to be_false
+    end
+
+    it "returns false when no file is attached" do
+      expect(attacher.cached?).to be_false
+    end
+
+    it "returns false when specified file is nil" do
+      expect(attacher.cached?(nil)).to be_false
+    end
+  end
+
+  describe "#stored?" do
+    it "returns true when attached file is present and stored" do
+      attacher.file = Shrine.upload(fakeio, "store")
+
+      expect(attacher.stored?).to be_true
+    end
+
+    it "returns true when specified file is present and stored" do
+      expect(attacher.stored?(Shrine.upload(fakeio, "store"))).to be_true
+    end
+
+    it "returns false when attached file is present and cached" do
+      attacher.file = Shrine.upload(fakeio, "cache")
+
+      expect(attacher.stored?).to be_false
+    end
+
+    it "returns false when specified file is present and cached" do
+      expect(attacher.stored?(Shrine.upload(fakeio, "cache"))).to be_false
+    end
+
+    it "returns false when no file is attached" do
+      expect(attacher.stored?).to be_false
+    end
+
+    it "returns false when specified file is nil" do
+      expect(attacher.stored?(nil)).to be_false
+    end
+  end
+
+  describe "#data" do
+    it "returns file data when file is attached" do
+      file = attacher.attach(fakeio)
+
+      expect(attacher.data).to eq(file.not_nil!.data)
+    end
+
+    it "returns nil when no file is attached" do
+      expect(attacher.data).to be_nil
+    end
+  end
+
+  describe "#load_data" do
+    it "loads file from given file data" do
+      file = attacher.upload(fakeio)
+      attacher.load_data(file.data)
+
+      expect(attacher.file).to eq(file)
+    end
+
+    it "handles NamedTuple" do
+      file = attacher.upload(fakeio)
+      attacher.load_data(
+        id: file.id,
+        storage_key: file.storage_key,
+        metadata: file.metadata,
+      )
+
+      expect(attacher.file).to eq(file)
+    end
+
+    it "clears file when given data is nil" do
+      attacher.file = attacher.upload(fakeio)
+      attacher.load_data(nil)
+
+      expect(attacher.file).to be_nil
+    end
+  end
+
+  describe "#file=" do
+    it "sets the file" do
+      file = attacher.upload(fakeio)
+      attacher.file = file
+
+      expect(attacher.file).to eq(file)
+    end
+  end
 end

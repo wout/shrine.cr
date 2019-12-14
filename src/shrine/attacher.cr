@@ -15,7 +15,7 @@ class Shrine
       #
       #     attacher = Attacher.from_data({ "id" => "...", "storage" => "...", "metadata" => { ... } })
       #     attacher.file #=> #<Shrine::UploadedFile>
-      def from_data(data, **options)
+      def from_data(data : Hash(String, String | UploadedFile::MetadataType)?, **options)
         attacher = new(**options)
         attacher.load_data(data)
         attacher
@@ -195,8 +195,16 @@ class Shrine
       #     attacher.file #=> nil
       #     attacher.load_data({ "id" => "...", "storage" => "...", "metadata" => { ... } })
       #     attacher.file #=> #<Shrine::UploadedFile>
-      def load_data(data)
-        @file = uploaded_file(data) if data
+      def load_data(data : Hash(String, String | UploadedFile::MetadataType))
+        @file = uploaded_file(data)
+      end
+
+      def load_data(**data)
+        @file = uploaded_file(data.to_h.transform_keys { |key| key.to_s })
+      end
+
+      def load_data(data : Nil)
+        @file = nil
       end
 
       # Sets the uploaded file with dirty tracking, and runs validations.
@@ -270,6 +278,21 @@ class Shrine
       #     attacher.cached?(file) # checks given file
       def cached?(file = self.file)
         uploaded?(file, cache_key)
+      end
+
+      # Returns whether the file is uploaded to permanent storage.
+      #
+      #     attacher.stored?       # checks current file
+      #     attacher.stored?(file) # checks given file
+      def stored?(file = self.file)
+        uploaded?(file, store_key)
+      end
+
+      # Generates serializable data for the attachment.
+      #
+      #     attacher.data #=> { "id" => "...", "storage" => "...", "metadata": { ... } }
+      def data
+        file.try &.data
       end
 
       # Converts JSON or Hash data into a Shrine::UploadedFile object.
