@@ -37,9 +37,9 @@ class Shrine
 
       # Initializes the attached file, temporary and permanent storage.
       def initialize(@file : Shrine::UploadedFile? = nil, @cache_key : String = "cache", @store_key : String = "store")
-        # @file = file
-        # @cache = cache
-        # @store = store
+        @file = file
+        @cache_key = cache_key
+        @store_key = store_key
         @context = Hash(String, String).new
       end
 
