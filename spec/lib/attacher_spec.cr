@@ -609,5 +609,58 @@ Spectator.describe Shrine::Attacher do
 
       expect(attacher.file).to eq(file)
     end
+
+    it "accepts nil" do
+      attacher.attach(fakeio)
+      attacher.file = nil
+
+      expect(attacher.file).to be_nil
+    end
+  end
+
+  describe "#file" do
+    it "returns set file" do
+      file = attacher.upload(fakeio)
+      attacher.file = file
+
+      expect(attacher.file).to eq(file)
+    end
+
+    it "returns nil when no file is set" do
+      expect(attacher.file).to be_nil
+    end
+  end
+
+  describe "#file!" do
+    it "returns set file" do
+      file = attacher.upload(fakeio)
+      attacher.file = file
+
+      expect(attacher.file!).to eq(file)
+    end
+
+    it "raises exception" do
+      expect { attacher.file! }.to raise_error(Shrine::Error)
+    end
+  end
+
+  describe "#upload_file" do
+    it "instantiates an uploaded file with JSON data" do
+      file = attacher.upload(fakeio)
+
+      expect(attacher.uploaded_file(file.to_json)).to eq(file)
+    end
+
+    it "instantiates an uploaded file with Hash data" do
+      file = attacher.upload(fakeio)
+
+      expect(attacher.uploaded_file(file.data)).to eq(file)
+    end
+
+    it "returns file with UploadedFile" do
+      file = attacher.upload(fakeio)
+
+      expect(attacher.uploaded_file(file)).to eq(file)
+    end
   end
 end
