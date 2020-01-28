@@ -1,11 +1,22 @@
 require "../../spec_helper"
 
+require "yaml"
+
 class ShrineWithColumn < Shrine
   load_plugin(Shrine::Plugins::Column)
 
   finalize_plugins!
 end
 
+class YamlSerializer < Shrine::Plugins::Column::BaseSerializer
+  def self.dump(data)
+    data.try &.to_yaml
+  end
+
+  def self.load(data)
+    Hash(String, String | Shrine::UploadedFile::MetadataType).from_yaml(data)
+  end
+end
 
 Spectator.describe Shrine::Plugins::Column do
   include FileHelpers
@@ -83,6 +94,13 @@ Spectator.describe Shrine::Plugins::Column do
 
     it "returns nil when no file is attached" do
       expect(attacher.column_data).to be_nil
+    end
+
+    it "uses custom serializer" do
+      attacher = ShrineWithColumn::Attacher.new(column_serializer: YamlSerializer)
+      attacher.attach(fakeio)
+
+      expect(attacher.column_data).to eq(attacher.file.not_nil!.data.to_yaml)
     end
   end
 

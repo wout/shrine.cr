@@ -1,13 +1,33 @@
 class Shrine
   module Plugins
     module Column
-      # DEFAULT_OPTIONS = {
-      #   serializer: JsonSerializer
-      # }
-      # def self.configure(uploader, **opts)
-      #   uploader.opts[:column] ||= { serializer: JsonSerializer }
-      #   uploader.opts[:column].merge!(opts)
-      # end
+      abstract class BaseSerializer
+
+        # Since we cannot make class level method abstract we raise NotImplementedError
+        # https://github.com/crystal-lang/crystal/issues/5956
+        #
+        def self.dump(data)
+          raise NotImplementedError.new("Implement method .dump")
+        end
+
+        def self.load(data)
+          raise NotImplementedError.new("Implement method .load")
+        end
+      end
+
+      class JsonSerializer < BaseSerializer
+        def self.dump(data)
+          data.try &.to_json
+        end
+
+        def self.load(data)
+          Hash(String, String | UploadedFile::MetadataType).from_json(data)
+        end
+      end
+
+      DEFAULT_OPTIONS = {
+        column_serializer: Shrine::Plugins::Column::JsonSerializer
+      }
 
       module AttacherClassMethods
         # Initializes the attacher from a data hash/string expected to come
@@ -23,13 +43,12 @@ class Shrine
 
       module AttacherMethods
         # Column serializer object.
-        # getter :column_serializer
+        getter column_serializer : Shrine::Plugins::Column::BaseSerializer.class
 
         # Allows overriding the default column serializer.
-        # def initialize(@column_serializer = self.class.shrine_class.plugin_settings.column[:serializer], **options)
-        #   super(**options)
-        #   # @column_serializer = column_serializer
-        # end
+        def initialize(@column_serializer = self.class.shrine_class.plugin_settings.column[:column_serializer], **options)
+          super(**options)
+        end
 
         # Loads attachment from column data.
         #
@@ -37,7 +56,7 @@ class Shrine
         #     attacher.load_column('{"id":"...","storage":"...","metadata":{...}}')
         #     attacher.file #=> #<Shrine::UploadedFile>
         def load_column(data : String) : UploadedFile
-          load_data(Hash(String, String | UploadedFile::MetadataType).from_json(data))
+          load_data(column_serializer.load(data))
         end
 
         def load_column(data : Nil) : Nil
@@ -49,7 +68,8 @@ class Shrine
         #     attacher.column_data #=> '{"id":"...","storage":"...","metadata":{...}}'
         def column_data
           # serialize_column(data)
-          data.try &.to_json
+
+          column_serializer.dump(data)
         end
 
         # Converts the column data hash into a string (generates JSON by
@@ -82,19 +102,6 @@ class Shrine
         #     data.to_hash
         #   end
         # end
-      end
-
-      # JSON.dump and JSON.load shouldn't be used with untrusted input, so we
-      # create this wrapper class which calls JSON.generate and JSON.parse
-      # instead.
-      class JsonSerializer
-        def self.dump(data)
-          data.to_json
-        end
-
-        def self.load(data)
-          JSON.parse(data)
-        end
       end
     end
   end
