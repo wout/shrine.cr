@@ -48,6 +48,18 @@ class Shrine
     {% for plugin in @type.superclass.constant(:PLUGINS) %}
       load_plugin({{plugin[:decl]}}, {{plugin[:options].double_splat}})
     {% end %}
+
+    class Attacher < Shrine::Attacher
+      def self.shrine_class
+        {{ @type }}
+      end
+    end
+
+    # class UploadedFile
+    #   def self.shrine_class
+    #     {{ @type }}
+    #   end
+    # end
   end
 
   macro load_plugin(plugin, **args)
@@ -89,6 +101,18 @@ class Shrine
     {% if plugin.constant(:FileMethods) %}
       class UploadedFile < Shrine::UploadedFile
         include {{plugin.constant(:FileMethods)}}
+      end
+    {% end %}
+
+    {% if plugin.constant(:AttacherClassMethods) %}
+      class Attacher < Shrine::Attacher
+        extend {{plugin.constant(:AttacherClassMethods)}}
+      end
+    {% end %}
+
+    {% if plugin.constant(:AttacherMethods) %}
+      class Attacher < Shrine::Attacher
+        include {{plugin.constant(:AttacherMethods)}}
       end
     {% end %}
   end

@@ -7,7 +7,7 @@ class Shrine
     # @shrine_class = ::Shrine
     # Returns the Shrine class that this attacher class is namespaced
     # under.
-    class_property shrine_class : Shrine.class = Shrine
+    # class_property shrine_class : Shrine.class = Shrine
 
     module ClassMethods
 
@@ -19,6 +19,11 @@ class Shrine
         attacher = new(**options)
         attacher.load_data(data)
         attacher
+      end
+
+      # Returns the Shrine class that this attacher class is namespaced under.
+      def shrine_class
+        Shrine
       end
     end
 
