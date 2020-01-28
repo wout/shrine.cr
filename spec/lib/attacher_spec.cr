@@ -320,7 +320,7 @@ Spectator.describe Shrine::Attacher do
     end
 
     it "forwards additional options" do
-      uploaded_file = attacher.upload(fakeio, metadata: { "foo" => "bar" })
+      uploaded_file = attacher.upload(fakeio, metadata: {"foo" => "bar"})
 
       expect(uploaded_file.metadata["foo"]).to eq("bar")
     end

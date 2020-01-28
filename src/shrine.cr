@@ -126,8 +126,8 @@ class Shrine
               options = (plugin[:options].empty? ? nil : plugin[:options])
 
               {
-                name: plugin[:decl].stringify.underscore.split("::").last,
-                options: options
+                name:    plugin[:decl].stringify.underscore.split("::").last,
+                options: options,
               }
             end
           }}

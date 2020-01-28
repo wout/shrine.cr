@@ -2,12 +2,6 @@ require "../../spec_helper"
 
 require "yaml"
 
-class ShrineWithColumn < Shrine
-  load_plugin(Shrine::Plugins::Column)
-
-  finalize_plugins!
-end
-
 class YamlSerializer < Shrine::Plugins::Column::BaseSerializer
   def self.dump(data)
     data.try &.to_yaml
@@ -16,6 +10,18 @@ class YamlSerializer < Shrine::Plugins::Column::BaseSerializer
   def self.load(data)
     Hash(String, String | Shrine::UploadedFile::MetadataType).from_yaml(data)
   end
+end
+
+class ShrineWithColumn < Shrine
+  load_plugin(Shrine::Plugins::Column)
+
+  finalize_plugins!
+end
+
+class ShrineWithColumnAndYamlSerializer < Shrine
+  load_plugin(Shrine::Plugins::Column, column_serializer: YamlSerializer)
+
+  finalize_plugins!
 end
 
 Spectator.describe Shrine::Plugins::Column do
@@ -40,27 +46,17 @@ Spectator.describe Shrine::Plugins::Column do
     end
   end
 
-  # describe "#initialize" do
-  #   it "accepts a serializer" do
-  #     attacher = @shrine::Attacher.new(column_serializer: :my_serializer)
+  describe "#initialize" do
+    it "accepts a serializer" do
+      attacher = ShrineWithColumn::Attacher.new(column_serializer: YamlSerializer)
 
-  #     assert_equal :my_serializer, attacher.column_serializer
-  #   end
+      expect(attacher.column_serializer).to eq(YamlSerializer)
+    end
 
-  #   it "accepts nil serializer" do
-  #     attacher = @shrine::Attacher.new(column_serializer: nil)
-
-  #     assert_nil attacher.column_serializer
-  #   end
-
-  #   it "uses plugin serializer as default" do
-  #     @shrine.plugin :column, serializer: RubySerializer
-  #     assert_equal RubySerializer, @shrine::Attacher.new.column_serializer
-
-  #     @shrine.plugin :column, serializer: nil
-  #     assert_nil @shrine::Attacher.new.column_serializer
-  #   end
-  # end
+    it "uses plugin serializer as default" do
+      expect(ShrineWithColumnAndYamlSerializer::Attacher.new.column_serializer).to eq(YamlSerializer)
+    end
+  end
 
   describe "#load_column" do
     it "loads file from serialized file data" do
@@ -77,12 +73,14 @@ Spectator.describe Shrine::Plugins::Column do
       expect(attacher.file).to be_nil
     end
 
-    # it "handles hashes" do
-    #   file = attacher.attach(fakeio)
-    #   attacher.load_column(file.not_nil!.data)
+    it "uses custom serializer" do
+      attacher = ShrineWithColumn::Attacher.new(column_serializer: YamlSerializer)
 
-    #   expect(attacher.file).to eq(file)
-    # end
+      file = attacher.upload(fakeio)
+      attacher.load_column(file.data.to_yaml)
+
+      expect(attacher.file).to eq(file)
+    end
   end
 
   describe "#column_data" do
@@ -103,6 +101,4 @@ Spectator.describe Shrine::Plugins::Column do
       expect(attacher.column_data).to eq(attacher.file.not_nil!.data.to_yaml)
     end
   end
-
-
 end

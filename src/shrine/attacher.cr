@@ -10,7 +10,6 @@ class Shrine
     # class_property shrine_class : Shrine.class = Shrine
 
     module ClassMethods
-
       # Initializes the attacher from a data hash generated from `Attacher#data`.
       #
       #     attacher = Attacher.from_data({ "id" => "...", "storage" => "...", "metadata" => { ... } })

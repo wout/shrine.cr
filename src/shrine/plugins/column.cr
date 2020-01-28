@@ -2,7 +2,6 @@ class Shrine
   module Plugins
     module Column
       abstract class BaseSerializer
-
         # Since we cannot make class level method abstract we raise NotImplementedError
         # https://github.com/crystal-lang/crystal/issues/5956
         #
@@ -26,7 +25,7 @@ class Shrine
       end
 
       DEFAULT_OPTIONS = {
-        column_serializer: Shrine::Plugins::Column::JsonSerializer
+        column_serializer: Shrine::Plugins::Column::JsonSerializer,
       }
 
       module AttacherClassMethods
@@ -66,42 +65,9 @@ class Shrine
         # Returns attacher data as a serialized string (JSON by default).
         #
         #     attacher.column_data #=> '{"id":"...","storage":"...","metadata":{...}}'
-        def column_data
-          # serialize_column(data)
-
+        def column_data : String | Nil
           column_serializer.dump(data)
         end
-
-        # Converts the column data hash into a string (generates JSON by
-        # default).
-        #
-        #     Attacher.serialize_column({ "id" => "...", "storage" => "...", "metadata" => { ... } })
-        #     #=> '{"id":"...","storage":"...","metadata":{...}}'
-        #
-        #     Attacher.serialize_column(nil)
-        #     #=> nil
-        private def serialize_column(data)
-          if column_serializer && data
-            column_serializer.dump(data)
-          else
-            data
-          end
-        end
-
-        # Converts the column data string into a hash (parses JSON by default).
-        #
-        #     Attacher.deserialize_column('{"id":"...","storage":"...","metadata":{...}}')
-        #     #=> { "id" => "...", "storage" => "...", "metadata" => { ... } }
-        #
-        #     Attacher.deserialize_column(nil)
-        #     #=> nil
-        # private def deserialize_column(data)
-        #   if column_serializer && data && !data.is_a?(Hash)
-        #     column_serializer.load(data)
-        #   else
-        #     data.to_hash
-        #   end
-        # end
       end
     end
   end

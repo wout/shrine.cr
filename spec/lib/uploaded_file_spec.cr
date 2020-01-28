@@ -12,9 +12,9 @@ Spectator.describe Shrine::UploadedFile do
 
   let(metadata) {
     Shrine::UploadedFile::MetadataType{
-      "filename" => filename,
+      "filename"  => filename,
       "mime_type" => mime_type,
-      "size" => size
+      "size"      => size,
     }
   }
 
@@ -366,16 +366,16 @@ Spectator.describe Shrine::UploadedFile do
   describe "#data" do
     let(metadata) {
       Shrine::UploadedFile::MetadataType{
-        "foo" => "bar"
+        "foo" => "bar",
       }
     }
 
     it "returns uploaded file data hash" do
       expect(uploaded_file.data).to eq(
         {
-          "id" => id,
+          "id"          => id,
           "storage_key" => "cache",
-          "metadata" => metadata
+          "metadata"    => metadata,
         }
       )
     end
