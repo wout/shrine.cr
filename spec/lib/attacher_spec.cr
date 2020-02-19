@@ -1,7 +1,6 @@
 require "../spec_helper"
 
 Spectator.describe Shrine::Attacher do
-  # include ShrineHelpers
   include FileHelpers
 
   let(attacher) {
