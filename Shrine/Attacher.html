@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="shrine">
-  <title>Shrine::Storage - shrine master</title>
+  <title>Shrine::Attacher - shrine master</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -56,7 +56,7 @@
       
         <ul>
   
-  <li class="parent " data-id="shrine/Shrine/Attacher" data-name="shrine::attacher">
+  <li class="parent open current" data-id="shrine/Shrine/Attacher" data-name="shrine::attacher">
       <a href="../Shrine/Attacher.html">Attacher</a>
       
         <ul>
@@ -241,7 +241,7 @@
       
     </li>
   
-  <li class="parent open current" data-id="shrine/Shrine/Storage" data-name="shrine::storage">
+  <li class="parent " data-id="shrine/Shrine/Storage" data-name="shrine::storage">
       <a href="../Shrine/Storage.html">Storage</a>
       
         <ul>
@@ -305,19 +305,61 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">module</span> Shrine::Storage
+  <span class="kind">class</span> Shrine::Attacher
 
 </h1>
 
 
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Shrine/Attacher.html">Shrine::Attacher</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Core class that handles attaching files. It uses Shrine and
+Shrine::UploadedFile objects internally.</p>
 
 
 
 
 
+  <h2>
+    <a id="included-modules" class="anchor" href="#included-modules">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Included Modules
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type"><a href="../Shrine/Attacher/InstanceMethods.html">Shrine::Attacher::InstanceMethods</a></li>
+    
+  </ul>
 
 
 
+  <h2>
+    <a id="extended-modules" class="anchor" href="#extended-modules">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Extended Modules
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type"><a href="../Shrine/Attacher/ClassMethods.html">Shrine::Attacher::ClassMethods</a></li>
+    
+  </ul>
 
 
 
@@ -336,29 +378,8 @@
   </h2>
   
     
-      <a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/storage/base.cr#L4" target="_blank">
-        shrine/storage/base.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/storage/file_system.cr#L4" target="_blank">
-        shrine/storage/file_system.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/storage/memory.cr#L4" target="_blank">
-        shrine/storage/memory.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/storage/s3.cr#L7" target="_blank">
-        shrine/storage/s3.cr
+      <a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/attacher.cr#L6" target="_blank">
+        shrine/attacher.cr
       </a>
     
     <br/>
@@ -369,6 +390,25 @@
 
 
 
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#shrine_class:Shrine.class-class-method" class="signature"><strong>.shrine_class</strong> : <span class="t">Shrine</span>.<span class="k">class</span></a>
+        
+          <div class="summary"><p>Returns the Shrine class that this attacher class is namespaced under.</p></div>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -378,10 +418,225 @@
 
 <div class="methods-inherited">
   
+    
+
+  <h3>Instance methods inherited from module <code><a href="../Shrine/Attacher/InstanceMethods.html">Shrine::Attacher::InstanceMethods</a></code></h3>
+  
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#assign(value:IO?,**options)-instance-method" class="tooltip">
+      <span>assign(value : IO?, **options)</span>
+    assign</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#attach(io:IO%7CShrine::UploadedFile%7CNil,storage=store_key,**options):UploadedFile?-instance-method" class="tooltip">
+      <span>attach(io : IO | Shrine::UploadedFile | Nil, storage = store_key, **options) : UploadedFile?</span>
+    attach</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#attach_cached(value:IO%7CUploadedFile%7CNil,**options)-instance-method" class="tooltip">
+      <span>attach_cached(value : IO | UploadedFile | Nil, **options)<br/>attach_cached(value : String | Hash(String, String | UploadedFile::MetadataType), **options)</span>
+    attach_cached</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#attached?-instance-method" class="tooltip">
+      <span>attached?</span>
+    attached?</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#cache_key-instance-method" class="tooltip">
+      <span>cache_key</span>
+    cache_key</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#cached?(file=self.file)-instance-method" class="tooltip">
+      <span>cached?(file = <span class="k">self</span>.file)</span>
+    cached?</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#change(file:Shrine::UploadedFile?):Shrine::UploadedFile?-instance-method" class="tooltip">
+      <span>change(file : Shrine::UploadedFile?) : Shrine::UploadedFile?</span>
+    change</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#changed?-instance-method" class="tooltip">
+      <span>changed?</span>
+    changed?</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#context-instance-method" class="tooltip">
+      <span>context</span>
+    context</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#data-instance-method" class="tooltip">
+      <span>data</span>
+    data</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#destroy-instance-method" class="tooltip">
+      <span>destroy</span>
+    destroy</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#destroy_attached-instance-method" class="tooltip">
+      <span>destroy_attached</span>
+    destroy_attached</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#destroy_previous-instance-method" class="tooltip">
+      <span>destroy_previous</span>
+    destroy_previous</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#file:Shrine::UploadedFile?-instance-method" class="tooltip">
+      <span>file : Shrine::UploadedFile?</span>
+    file</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#file!-instance-method" class="tooltip">
+      <span>file!</span>
+    file!</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#file=(file:Shrine::UploadedFile?)-instance-method" class="tooltip">
+      <span>file=(file : Shrine::UploadedFile?)</span>
+    file=</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#finalize-instance-method" class="tooltip">
+      <span>finalize</span>
+    finalize</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#get-instance-method" class="tooltip">
+      <span>get</span>
+    get</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#load_data(data:Hash(String,String%7CUploadedFile::MetadataType))-instance-method" class="tooltip">
+      <span>load_data(data : Hash(String, String | UploadedFile::MetadataType))<br/>load_data(data : Nil)<br/>load_data(**data)</span>
+    load_data</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#promote(storage=store_key,**options):Shrine::UploadedFile?-instance-method" class="tooltip">
+      <span>promote(storage = store_key, **options) : Shrine::UploadedFile?</span>
+    promote</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#promote_cached(**options)-instance-method" class="tooltip">
+      <span>promote_cached(**options)</span>
+    promote_cached</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#set(file:Shrine::UploadedFile?):Shrine::UploadedFile?-instance-method" class="tooltip">
+      <span>set(file : Shrine::UploadedFile?) : Shrine::UploadedFile?</span>
+    set</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#shrine_class-instance-method" class="tooltip">
+      <span>shrine_class</span>
+    shrine_class</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#store_key-instance-method" class="tooltip">
+      <span>store_key</span>
+    store_key</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#stored?(file=self.file)-instance-method" class="tooltip">
+      <span>stored?(file = <span class="k">self</span>.file)</span>
+    stored?</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#upload(io:IO%7CShrine::UploadedFile,storage=store_key,**options):Shrine::UploadedFile-instance-method" class="tooltip">
+      <span>upload(io : IO | Shrine::UploadedFile, storage = store_key, **options) : Shrine::UploadedFile</span>
+    upload</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#uploaded_file(value)-instance-method" class="tooltip">
+      <span>uploaded_file(value)</span>
+    uploaded_file</a>, 
+    
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#url(**options)-instance-method" class="tooltip">
+      <span>url(**options)</span>
+    url</a>
+    
+  
+
+
+    
+
+  <h3>Constructor methods inherited from module <code><a href="../Shrine/Attacher/InstanceMethods.html">Shrine::Attacher::InstanceMethods</a></code></h3>
+  
+  
+    <a href="../Shrine/Attacher/InstanceMethods.html#new(file:Shrine::UploadedFile?=nil,cache_key:String=%22cache%22,store_key:String=%22store%22)-class-method" class="tooltip">
+      <span>new(file : Shrine::UploadedFile? = <span class="n">nil</span>, cache_key : String = <span class="s">&quot;cache&quot;</span>, store_key : String = <span class="s">&quot;store&quot;</span>)</span>
+    new</a>
+    
+  
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
 </div>
 
 
 
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="shrine_class:Shrine.class-class-method">
+      <div class="signature">
+        
+        def self.<strong>shrine_class</strong> : <span class="t">Shrine</span>.<span class="k">class</span>
+
+        <a class="method-permalink" href="#shrine_class:Shrine.class-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the Shrine class that this attacher class is namespaced
+under.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/attacher.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
 
 
 

@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="shrine">
-  <title>Shrine::Storage - shrine master</title>
+  <title>Shrine::HabitatSettings - shrine master</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -91,7 +91,7 @@
       
     </li>
   
-  <li class=" " data-id="shrine/Shrine/HabitatSettings" data-name="shrine::habitatsettings">
+  <li class=" current" data-id="shrine/Shrine/HabitatSettings" data-name="shrine::habitatsettings">
       <a href="../Shrine/HabitatSettings.html">HabitatSettings</a>
       
     </li>
@@ -241,7 +241,7 @@
       
     </li>
   
-  <li class="parent open current" data-id="shrine/Shrine/Storage" data-name="shrine::storage">
+  <li class="parent " data-id="shrine/Shrine/Storage" data-name="shrine::storage">
       <a href="../Shrine/Storage.html">Storage</a>
       
         <ul>
@@ -305,10 +305,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">module</span> Shrine::Storage
+  <span class="kind">class</span> Shrine::HabitatSettings
 
 </h1>
 
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Shrine/HabitatSettings.html">Shrine::HabitatSettings</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -336,29 +338,8 @@
   </h2>
   
     
-      <a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/storage/base.cr#L4" target="_blank">
-        shrine/storage/base.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/storage/file_system.cr#L4" target="_blank">
-        shrine/storage/file_system.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/storage/memory.cr#L4" target="_blank">
-        shrine/storage/memory.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/storage/s3.cr#L7" target="_blank">
-        shrine/storage/s3.cr
+      <a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L31" target="_blank">
+        shrine.cr
       </a>
     
     <br/>
@@ -369,6 +350,42 @@
 
 
 
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#storages:Hash(String,Storage::Base)-class-method" class="signature"><strong>.storages</strong> : Hash(String, Storage::Base)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#storages=(value:Hash(String,Storage::Base))-class-method" class="signature"><strong>.storages=</strong>(value : Hash(String, Storage::Base))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#storages?-class-method" class="signature"><strong>.storages?</strong></a>
+        
+          <div class="summary"><p>Used for checking missing settings on non-nilable types It's advised to use storages in your apps to ensure the propper type is checked.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_h-class-method" class="signature"><strong>.to_h</strong></a>
+        
+          <div class="summary"><p>Generates a hash using the provided values</p></div>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -378,10 +395,108 @@
 
 <div class="methods-inherited">
   
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
 </div>
 
 
 
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="storages:Hash(String,Storage::Base)-class-method">
+      <div class="signature">
+        
+        def self.<strong>storages</strong> : Hash(String, <a href="../Shrine/Storage/Base.html">Storage::Base</a>)
+
+        <a class="method-permalink" href="#storages:Hash(String,Storage::Base)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="storages=(value:Hash(String,Storage::Base))-class-method">
+      <div class="signature">
+        
+        def self.<strong>storages=</strong>(value : Hash(String, <a href="../Shrine/Storage/Base.html">Storage::Base</a>))
+
+        <a class="method-permalink" href="#storages=(value:Hash(String,Storage::Base))-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="storages?-class-method">
+      <div class="signature">
+        
+        def self.<strong>storages?</strong>
+
+        <a class="method-permalink" href="#storages?-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Used for checking missing settings on non-nilable types
+It's advised to use storages in your apps to ensure
+the propper type is checked.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_h-class-method">
+      <div class="signature">
+        
+        def self.<strong>to_h</strong>
+
+        <a class="method-permalink" href="#to_h-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Generates a hash using the provided values</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 

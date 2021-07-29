@@ -3,84 +3,125 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.33.0">
+<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="crystal_docs.project_version" content="master">
+<meta name="crystal_docs.project_name" content="shrine">
+
+
 
 <link href="../../css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../../js/doc.js"></script>
+
+  <meta name="repository-name" content="shrine">
+  <title>Shrine::Plugins::DetermineMimeType - shrine master</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../../";
+  </script>
+</head>
+<body>
 
 <svg class="hidden">
   <symbol id="octicon-link" viewBox="0 0 16 16">
     <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
   </symbol>
 </svg>
-
-  <meta id="repository-name" content="github.com/jetrockets/shrine.cr">
-  <title>Shrine::Plugins::DetermineMimeType - github.com/jetrockets/shrine.cr</title>
-  <script type="text/javascript">
-    CrystalDoc.base_path = "../../";
-  </script>
-</head>
-<body>
-
 <div class="sidebar">
   <div class="sidebar-header">
     <div class="search-box">
       <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
     </div>
 
-    <div class="repository-links">
-      <a href="../../index.html">README</a>
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../../index.html">
+          shrine
+        </a>
+      </h1>
+
+      <span class="project-version">
+        master
+      </span>
     </div>
   </div>
 
-  <div class="search-results" class="hidden">
+  <div class="search-results hidden">
     <ul class="search-list"></ul>
   </div>
 
   <div class="types-list">
     <ul>
   
-  <li class="parent open current" data-id="github.com/jetrockets/shrine.cr/Shrine" data-name="shrine">
+  <li class="parent open current" data-id="shrine/Shrine" data-name="shrine">
       <a href="../../Shrine.html">Shrine</a>
       
         <ul>
   
-  <li class=" " data-id="github.com/jetrockets/shrine.cr/Shrine/ClassMethods" data-name="shrine::classmethods">
+  <li class="parent " data-id="shrine/Shrine/Attacher" data-name="shrine::attacher">
+      <a href="../../Shrine/Attacher.html">Attacher</a>
+      
+        <ul>
+  
+  <li class=" " data-id="shrine/Shrine/Attacher/ClassMethods" data-name="shrine::attacher::classmethods">
+      <a href="../../Shrine/Attacher/ClassMethods.html">ClassMethods</a>
+      
+    </li>
+  
+  <li class=" " data-id="shrine/Shrine/Attacher/InstanceMethods" data-name="shrine::attacher::instancemethods">
+      <a href="../../Shrine/Attacher/InstanceMethods.html">InstanceMethods</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="shrine/Shrine/ClassMethods" data-name="shrine::classmethods">
       <a href="../../Shrine/ClassMethods.html">ClassMethods</a>
       
     </li>
   
-  <li class=" " data-id="github.com/jetrockets/shrine.cr/Shrine/Error" data-name="shrine::error">
+  <li class=" " data-id="shrine/Shrine/Error" data-name="shrine::error">
       <a href="../../Shrine/Error.html">Error</a>
       
     </li>
   
-  <li class=" " data-id="github.com/jetrockets/shrine.cr/Shrine/FileNotFound" data-name="shrine::filenotfound">
+  <li class=" " data-id="shrine/Shrine/FileNotFound" data-name="shrine::filenotfound">
       <a href="../../Shrine/FileNotFound.html">FileNotFound</a>
       
     </li>
   
-  <li class=" " data-id="github.com/jetrockets/shrine.cr/Shrine/InstanceMethods" data-name="shrine::instancemethods">
+  <li class=" " data-id="shrine/Shrine/HabitatSettings" data-name="shrine::habitatsettings">
+      <a href="../../Shrine/HabitatSettings.html">HabitatSettings</a>
+      
+    </li>
+  
+  <li class=" " data-id="shrine/Shrine/InstanceMethods" data-name="shrine::instancemethods">
       <a href="../../Shrine/InstanceMethods.html">InstanceMethods</a>
       
     </li>
   
-  <li class=" " data-id="github.com/jetrockets/shrine.cr/Shrine/InvalidFile" data-name="shrine::invalidfile">
+  <li class=" " data-id="shrine/Shrine/InvalidFile" data-name="shrine::invalidfile">
       <a href="../../Shrine/InvalidFile.html">InvalidFile</a>
       
     </li>
   
-  <li class="parent open current" data-id="github.com/jetrockets/shrine.cr/Shrine/Plugins" data-name="shrine::plugins">
+  <li class=" " data-id="shrine/Shrine/NotCached" data-name="shrine::notcached">
+      <a href="../../Shrine/NotCached.html">NotCached</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="shrine/Shrine/Plugins" data-name="shrine::plugins">
       <a href="../../Shrine/Plugins.html">Plugins</a>
       
         <ul>
   
-  <li class="parent " data-id="github.com/jetrockets/shrine.cr/Shrine/Plugins/AddMetadata" data-name="shrine::plugins::addmetadata">
+  <li class="parent " data-id="shrine/Shrine/Plugins/AddMetadata" data-name="shrine::plugins::addmetadata">
       <a href="../../Shrine/Plugins/AddMetadata.html">AddMetadata</a>
       
         <ul>
   
-  <li class=" " data-id="github.com/jetrockets/shrine.cr/Shrine/Plugins/AddMetadata/InstanceMethods" data-name="shrine::plugins::addmetadata::instancemethods">
+  <li class=" " data-id="shrine/Shrine/Plugins/AddMetadata/InstanceMethods" data-name="shrine::plugins::addmetadata::instancemethods">
       <a href="../../Shrine/Plugins/AddMetadata/InstanceMethods.html">InstanceMethods</a>
       
     </li>
@@ -90,27 +131,57 @@
       
     </li>
   
-  <li class="parent open current" data-id="github.com/jetrockets/shrine.cr/Shrine/Plugins/DetermineMimeType" data-name="shrine::plugins::determinemimetype">
+  <li class="parent " data-id="shrine/Shrine/Plugins/Column" data-name="shrine::plugins::column">
+      <a href="../../Shrine/Plugins/Column.html">Column</a>
+      
+        <ul>
+  
+  <li class=" " data-id="shrine/Shrine/Plugins/Column/AttacherClassMethods" data-name="shrine::plugins::column::attacherclassmethods">
+      <a href="../../Shrine/Plugins/Column/AttacherClassMethods.html">AttacherClassMethods</a>
+      
+    </li>
+  
+  <li class=" " data-id="shrine/Shrine/Plugins/Column/AttacherMethods" data-name="shrine::plugins::column::attachermethods">
+      <a href="../../Shrine/Plugins/Column/AttacherMethods.html">AttacherMethods</a>
+      
+    </li>
+  
+  <li class=" " data-id="shrine/Shrine/Plugins/Column/BaseSerializer" data-name="shrine::plugins::column::baseserializer">
+      <a href="../../Shrine/Plugins/Column/BaseSerializer.html">BaseSerializer</a>
+      
+    </li>
+  
+  <li class=" " data-id="shrine/Shrine/Plugins/Column/JsonSerializer" data-name="shrine::plugins::column::jsonserializer">
+      <a href="../../Shrine/Plugins/Column/JsonSerializer.html">JsonSerializer</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent open current" data-id="shrine/Shrine/Plugins/DetermineMimeType" data-name="shrine::plugins::determinemimetype">
       <a href="../../Shrine/Plugins/DetermineMimeType.html">DetermineMimeType</a>
       
         <ul>
   
-  <li class=" " data-id="github.com/jetrockets/shrine.cr/Shrine/Plugins/DetermineMimeType/ClassMethods" data-name="shrine::plugins::determinemimetype::classmethods">
+  <li class=" " data-id="shrine/Shrine/Plugins/DetermineMimeType/ClassMethods" data-name="shrine::plugins::determinemimetype::classmethods">
       <a href="../../Shrine/Plugins/DetermineMimeType/ClassMethods.html">ClassMethods</a>
       
     </li>
   
-  <li class=" " data-id="github.com/jetrockets/shrine.cr/Shrine/Plugins/DetermineMimeType/InstanceMethods" data-name="shrine::plugins::determinemimetype::instancemethods">
+  <li class=" " data-id="shrine/Shrine/Plugins/DetermineMimeType/InstanceMethods" data-name="shrine::plugins::determinemimetype::instancemethods">
       <a href="../../Shrine/Plugins/DetermineMimeType/InstanceMethods.html">InstanceMethods</a>
       
     </li>
   
-  <li class=" " data-id="github.com/jetrockets/shrine.cr/Shrine/Plugins/DetermineMimeType/MimeTypeAnalyzer" data-name="shrine::plugins::determinemimetype::mimetypeanalyzer">
+  <li class=" " data-id="shrine/Shrine/Plugins/DetermineMimeType/MimeTypeAnalyzer" data-name="shrine::plugins::determinemimetype::mimetypeanalyzer">
       <a href="../../Shrine/Plugins/DetermineMimeType/MimeTypeAnalyzer.html">MimeTypeAnalyzer</a>
       
     </li>
   
-  <li class=" " data-id="github.com/jetrockets/shrine.cr/Shrine/Plugins/DetermineMimeType/Tools" data-name="shrine::plugins::determinemimetype::tools">
+  <li class=" " data-id="shrine/Shrine/Plugins/DetermineMimeType/Tools" data-name="shrine::plugins::determinemimetype::tools">
       <a href="../../Shrine/Plugins/DetermineMimeType/Tools.html">Tools</a>
       
     </li>
@@ -120,42 +191,77 @@
       
     </li>
   
+  <li class="parent " data-id="shrine/Shrine/Plugins/StoreDimensions" data-name="shrine::plugins::storedimensions">
+      <a href="../../Shrine/Plugins/StoreDimensions.html">StoreDimensions</a>
+      
+        <ul>
+  
+  <li class=" " data-id="shrine/Shrine/Plugins/StoreDimensions/ClassMethods" data-name="shrine::plugins::storedimensions::classmethods">
+      <a href="../../Shrine/Plugins/StoreDimensions/ClassMethods.html">ClassMethods</a>
+      
+    </li>
+  
+  <li class=" " data-id="shrine/Shrine/Plugins/StoreDimensions/DimensionsAnalyzer" data-name="shrine::plugins::storedimensions::dimensionsanalyzer">
+      <a href="../../Shrine/Plugins/StoreDimensions/DimensionsAnalyzer.html">DimensionsAnalyzer</a>
+      
+    </li>
+  
+  <li class=" " data-id="shrine/Shrine/Plugins/StoreDimensions/FileMethods" data-name="shrine::plugins::storedimensions::filemethods">
+      <a href="../../Shrine/Plugins/StoreDimensions/FileMethods.html">FileMethods</a>
+      
+    </li>
+  
+  <li class=" " data-id="shrine/Shrine/Plugins/StoreDimensions/IdentifyAnalyzer" data-name="shrine::plugins::storedimensions::identifyanalyzer">
+      <a href="../../Shrine/Plugins/StoreDimensions/IdentifyAnalyzer.html">IdentifyAnalyzer</a>
+      
+    </li>
+  
+  <li class=" " data-id="shrine/Shrine/Plugins/StoreDimensions/InstanceMethods" data-name="shrine::plugins::storedimensions::instancemethods">
+      <a href="../../Shrine/Plugins/StoreDimensions/InstanceMethods.html">InstanceMethods</a>
+      
+    </li>
+  
+  <li class=" " data-id="shrine/Shrine/Plugins/StoreDimensions/Tools" data-name="shrine::plugins::storedimensions::tools">
+      <a href="../../Shrine/Plugins/StoreDimensions/Tools.html">Tools</a>
+      
+    </li>
+  
 </ul>
 
       
     </li>
   
-  <li class=" " data-id="github.com/jetrockets/shrine.cr/Shrine/PluginSettings" data-name="shrine::pluginsettings">
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="shrine/Shrine/PluginSettings" data-name="shrine::pluginsettings">
       <a href="../../Shrine/PluginSettings.html">PluginSettings</a>
       
     </li>
   
-  <li class=" " data-id="github.com/jetrockets/shrine.cr/Shrine/Settings" data-name="shrine::settings">
-      <a href="../../Shrine/Settings.html">Settings</a>
-      
-    </li>
-  
-  <li class="parent " data-id="github.com/jetrockets/shrine.cr/Shrine/Storage" data-name="shrine::storage">
+  <li class="parent " data-id="shrine/Shrine/Storage" data-name="shrine::storage">
       <a href="../../Shrine/Storage.html">Storage</a>
       
         <ul>
   
-  <li class=" " data-id="github.com/jetrockets/shrine.cr/Shrine/Storage/Base" data-name="shrine::storage::base">
+  <li class=" " data-id="shrine/Shrine/Storage/Base" data-name="shrine::storage::base">
       <a href="../../Shrine/Storage/Base.html">Base</a>
       
     </li>
   
-  <li class=" " data-id="github.com/jetrockets/shrine.cr/Shrine/Storage/FileSystem" data-name="shrine::storage::filesystem">
+  <li class=" " data-id="shrine/Shrine/Storage/FileSystem" data-name="shrine::storage::filesystem">
       <a href="../../Shrine/Storage/FileSystem.html">FileSystem</a>
       
     </li>
   
-  <li class=" " data-id="github.com/jetrockets/shrine.cr/Shrine/Storage/Memory" data-name="shrine::storage::memory">
+  <li class=" " data-id="shrine/Shrine/Storage/Memory" data-name="shrine::storage::memory">
       <a href="../../Shrine/Storage/Memory.html">Memory</a>
       
     </li>
   
-  <li class=" " data-id="github.com/jetrockets/shrine.cr/Shrine/Storage/S3" data-name="shrine::storage::s3">
+  <li class=" " data-id="shrine/Shrine/Storage/S3" data-name="shrine::storage::s3">
       <a href="../../Shrine/Storage/S3.html">S3</a>
       
     </li>
@@ -165,12 +271,17 @@
       
     </li>
   
-  <li class="parent " data-id="github.com/jetrockets/shrine.cr/Shrine/UploadedFile" data-name="shrine::uploadedfile">
+  <li class="parent " data-id="shrine/Shrine/UploadedFile" data-name="shrine::uploadedfile">
       <a href="../../Shrine/UploadedFile.html">UploadedFile</a>
       
         <ul>
   
-  <li class=" " data-id="github.com/jetrockets/shrine.cr/Shrine/UploadedFile/MetadataType" data-name="shrine::uploadedfile::metadatatype">
+  <li class=" " data-id="shrine/Shrine/UploadedFile/Mapper" data-name="shrine::uploadedfile::mapper">
+      <a href="../../Shrine/UploadedFile/Mapper.html">Mapper</a>
+      
+    </li>
+  
+  <li class=" " data-id="shrine/Shrine/UploadedFile/MetadataType" data-name="shrine::uploadedfile::metadatatype">
       <a href="../../Shrine/UploadedFile/MetadataType.html">MetadataType</a>
       
     </li>
@@ -225,7 +336,7 @@
   </h2>
   
     
-      <a href="https://github.com/jetrockets/shrine.cr/blob/6e5e5652040114b863a38df0824ab2afb770e9a4/src/shrine/plugins/determine_mime_type.cr#L5" target="_blank">
+      <a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/plugins/determine_mime_type.cr#L5" target="_blank">
         shrine/plugins/determine_mime_type.cr
       </a>
     

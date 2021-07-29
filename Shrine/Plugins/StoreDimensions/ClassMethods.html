@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../../../js/doc.js"></script>
 
   <meta name="repository-name" content="shrine">
-  <title>Shrine::Plugins::DetermineMimeType::InstanceMethods - shrine master</title>
+  <title>Shrine::Plugins::StoreDimensions::ClassMethods - shrine master</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../../";
   </script>
@@ -161,7 +161,7 @@
       
     </li>
   
-  <li class="parent open current" data-id="shrine/Shrine/Plugins/DetermineMimeType" data-name="shrine::plugins::determinemimetype">
+  <li class="parent " data-id="shrine/Shrine/Plugins/DetermineMimeType" data-name="shrine::plugins::determinemimetype">
       <a href="../../../Shrine/Plugins/DetermineMimeType.html">DetermineMimeType</a>
       
         <ul>
@@ -171,7 +171,7 @@
       
     </li>
   
-  <li class=" current" data-id="shrine/Shrine/Plugins/DetermineMimeType/InstanceMethods" data-name="shrine::plugins::determinemimetype::instancemethods">
+  <li class=" " data-id="shrine/Shrine/Plugins/DetermineMimeType/InstanceMethods" data-name="shrine::plugins::determinemimetype::instancemethods">
       <a href="../../../Shrine/Plugins/DetermineMimeType/InstanceMethods.html">InstanceMethods</a>
       
     </li>
@@ -191,12 +191,12 @@
       
     </li>
   
-  <li class="parent " data-id="shrine/Shrine/Plugins/StoreDimensions" data-name="shrine::plugins::storedimensions">
+  <li class="parent open current" data-id="shrine/Shrine/Plugins/StoreDimensions" data-name="shrine::plugins::storedimensions">
       <a href="../../../Shrine/Plugins/StoreDimensions.html">StoreDimensions</a>
       
         <ul>
   
-  <li class=" " data-id="shrine/Shrine/Plugins/StoreDimensions/ClassMethods" data-name="shrine::plugins::storedimensions::classmethods">
+  <li class=" current" data-id="shrine/Shrine/Plugins/StoreDimensions/ClassMethods" data-name="shrine::plugins::storedimensions::classmethods">
       <a href="../../../Shrine/Plugins/StoreDimensions/ClassMethods.html">ClassMethods</a>
       
     </li>
@@ -305,7 +305,7 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">module</span> Shrine::Plugins::DetermineMimeType::InstanceMethods
+  <span class="kind">module</span> Shrine::Plugins::StoreDimensions::ClassMethods
 
 </h1>
 
@@ -336,8 +336,8 @@
   </h2>
   
     
-      <a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/plugins/determine_mime_type.cr#L36" target="_blank">
-        shrine/plugins/determine_mime_type.cr
+      <a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/plugins/store_dimensions.cr#L10" target="_blank">
+        shrine/plugins/store_dimensions.cr
       </a>
     
     <br/>
@@ -351,6 +351,39 @@
 
 
 
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#dimensions_analyzer(name:Tools)-instance-method" class="signature"><strong>#dimensions_analyzer</strong>(name : Tools)</a>
+        
+          <div class="summary"><p>Returns callable mime type analyzer object.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#dimensions_analyzers-instance-method" class="signature"><strong>#dimensions_analyzers</strong></a>
+        
+          <div class="summary"><p>Returns a hash of built-in MIME type analyzers, where keys are analyzer names and values are <code>#call</code>-able objects which accepts the IO object.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#extract_dimensions(io)-instance-method" class="signature"><strong>#extract_dimensions</strong>(io)</a>
+        
+          <div class="summary"><p>Determines the dimensions of the IO object by calling the specified analyzer.</p></div>
+        
+      </li>
+    
+  </ul>
+
 
 
 
@@ -363,6 +396,82 @@
 
 
 
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="dimensions_analyzer(name:Tools)-instance-method">
+      <div class="signature">
+        
+        def <strong>dimensions_analyzer</strong>(name : <a href="../../../Shrine/Plugins/StoreDimensions/Tools.html">Tools</a>)
+
+        <a class="method-permalink" href="#dimensions_analyzer(name:Tools)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns callable mime type analyzer object.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/plugins/store_dimensions.cr#L31" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="dimensions_analyzers-instance-method">
+      <div class="signature">
+        
+        def <strong>dimensions_analyzers</strong>
+
+        <a class="method-permalink" href="#dimensions_analyzers-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns a hash of built-in MIME type analyzers, where keys are
+analyzer names and values are <code>#call</code>-able objects which accepts the
+IO object.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/plugins/store_dimensions.cr#L26" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="extract_dimensions(io)-instance-method">
+      <div class="signature">
+        
+        def <strong>extract_dimensions</strong>(io)
+
+        <a class="method-permalink" href="#extract_dimensions(io)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Determines the dimensions of the IO object by calling the specified
+analyzer.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/plugins/store_dimensions.cr#L13" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
 
 
 

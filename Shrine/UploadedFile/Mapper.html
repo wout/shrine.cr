@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../../js/doc.js"></script>
 
   <meta name="repository-name" content="shrine">
-  <title>Shrine::Storage::Base - shrine master</title>
+  <title>Shrine::UploadedFile::Mapper - shrine master</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../";
   </script>
@@ -241,12 +241,12 @@
       
     </li>
   
-  <li class="parent open current" data-id="shrine/Shrine/Storage" data-name="shrine::storage">
+  <li class="parent " data-id="shrine/Shrine/Storage" data-name="shrine::storage">
       <a href="../../Shrine/Storage.html">Storage</a>
       
         <ul>
   
-  <li class=" current" data-id="shrine/Shrine/Storage/Base" data-name="shrine::storage::base">
+  <li class=" " data-id="shrine/Shrine/Storage/Base" data-name="shrine::storage::base">
       <a href="../../Shrine/Storage/Base.html">Base</a>
       
     </li>
@@ -271,12 +271,12 @@
       
     </li>
   
-  <li class="parent " data-id="shrine/Shrine/UploadedFile" data-name="shrine::uploadedfile">
+  <li class="parent open current" data-id="shrine/Shrine/UploadedFile" data-name="shrine::uploadedfile">
       <a href="../../Shrine/UploadedFile.html">UploadedFile</a>
       
         <ul>
   
-  <li class=" " data-id="shrine/Shrine/UploadedFile/Mapper" data-name="shrine::uploadedfile::mapper">
+  <li class=" current" data-id="shrine/Shrine/UploadedFile/Mapper" data-name="shrine::uploadedfile::mapper">
       <a href="../../Shrine/UploadedFile/Mapper.html">Mapper</a>
       
     </li>
@@ -305,16 +305,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">abstract class</span> Shrine::Storage::Base
+  <span class="kind">struct</span> Shrine::UploadedFile::Mapper
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Shrine/Storage/Base.html">Shrine::Storage::Base</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
-
-
-
-
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Shrine/UploadedFile/Mapper.html">Shrine::UploadedFile::Mapper</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
 
 
 
@@ -324,22 +320,22 @@
 
 
   <h2>
-    <a id="direct-known-subclasses" class="anchor" href="#direct-known-subclasses">
+    <a id="included-modules" class="anchor" href="#included-modules">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Direct Known Subclasses
+    Included Modules
   </h2>
   <ul class="other-types-list">
     
-      <li class="other-type"><a href="../../Shrine/Storage/FileSystem.html">Shrine::Storage::FileSystem</a></li>
-    
-      <li class="other-type"><a href="../../Shrine/Storage/Memory.html">Shrine::Storage::Memory</a></li>
-    
-      <li class="other-type"><a href="../../Shrine/Storage/S3.html">Shrine::Storage::S3</a></li>
+      <li class="other-type">JSON::Serializable</li>
     
   </ul>
+
+
+
+
 
 
 
@@ -356,8 +352,8 @@
   </h2>
   
     
-      <a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/storage/base.cr#L5" target="_blank">
-        shrine/storage/base.cr
+      <a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/uploaded_file.cr#L9" target="_blank">
+        shrine/uploaded_file.cr
       </a>
     
     <br/>
@@ -366,6 +362,28 @@
 
 
 
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new(id,storage_key,metadata)-class-method" class="signature"><strong>.new</strong>(id, storage_key, metadata)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new(pull:JSON::PullParser)-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -382,49 +400,17 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#clean(path:String)-instance-method" class="signature"><strong>#clean</strong>(path : String)</a>
-        
-          <div class="summary"><p>cleans the path in the storage</p></div>
+        <a href="#id:String-instance-method" class="signature"><strong>#id</strong> : String</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#clean?:Bool-instance-method" class="signature"><strong>#clean?</strong> : Bool</a>
+        <a href="#metadata:MetadataType-instance-method" class="signature"><strong>#metadata</strong> : MetadataType</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#delete(id:String)-instance-method" class="signature"><strong>#delete</strong>(id : String)</a>
-        
-          <div class="summary"><p>deletes the file from the storage</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#exists?(id:String):Bool-instance-method" class="signature"><strong>#exists?</strong>(id : String) : Bool</a>
-        
-          <div class="summary"><p>returns whether the file exists on storage</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#open(id:String,**options):IO-instance-method" class="signature"><strong>#open</strong>(id : String, **options) : IO</a>
-        
-          <div class="summary"><p>returns the remote file as an IO-like object</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#upload(io:IO%7CUploadedFile,id:String,move=false,**options)-instance-method" class="signature"><strong>#upload</strong>(io : IO | UploadedFile, id : String, move = <span class="n">false</span>, **options)</a>
-        
-          <div class="summary"><p>uploads <code>io</code> to the location <code>id</code>, can accept upload options</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#url(id:String,**options):String-instance-method" class="signature"><strong>#url</strong>(id : String, **options) : String</a>
-        
-          <div class="summary"><p>returns URL to the remote file, can accept URL options</p></div>
+        <a href="#storage_key:String-instance-method" class="signature"><strong>#storage_key</strong> : String</a>
         
       </li>
     
@@ -456,8 +442,70 @@
 
 
   
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
 </div>
 
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(id,storage_key,metadata)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(id, storage_key, metadata)
+
+        <a class="method-permalink" href="#new(id,storage_key,metadata)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/uploaded_file.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(pull : JSON::PullParser)
+
+        <a class="method-permalink" href="#new(pull:JSON::PullParser)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/uploaded_file.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
 
 
 
@@ -472,144 +520,50 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="clean(path:String)-instance-method">
+    <div class="entry-detail" id="id:String-instance-method">
       <div class="signature">
-        abstract 
-        def <strong>clean</strong>(path : String)
+        
+        def <strong>id</strong> : String
 
-        <a class="method-permalink" href="#clean(path:String)-instance-method">#</a>
+        <a class="method-permalink" href="#id:String-instance-method">#</a>
       </div>
-      
-        <div class="doc">
-          
-          <p>cleans the path in the storage</p>
-        </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/storage/base.cr#L24" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/uploaded_file.cr#L12" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="clean?:Bool-instance-method">
+    <div class="entry-detail" id="metadata:MetadataType-instance-method">
       <div class="signature">
         
-        def <strong>clean?</strong> : Bool
+        def <strong>metadata</strong> : <a href="../../Shrine/UploadedFile/MetadataType.html">MetadataType</a>
 
-        <a class="method-permalink" href="#clean?:Bool-instance-method">#</a>
+        <a class="method-permalink" href="#metadata:MetadataType-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/storage/base.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/uploaded_file.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="delete(id:String)-instance-method">
+    <div class="entry-detail" id="storage_key:String-instance-method">
       <div class="signature">
-        abstract 
-        def <strong>delete</strong>(id : String)
+        
+        def <strong>storage_key</strong> : String
 
-        <a class="method-permalink" href="#delete(id:String)-instance-method">#</a>
+        <a class="method-permalink" href="#storage_key:String-instance-method">#</a>
       </div>
-      
-        <div class="doc">
-          
-          <p>deletes the file from the storage</p>
-        </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/storage/base.cr#L21" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="exists?(id:String):Bool-instance-method">
-      <div class="signature">
-        abstract 
-        def <strong>exists?</strong>(id : String) : Bool
-
-        <a class="method-permalink" href="#exists?(id:String):Bool-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>returns whether the file exists on storage</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/storage/base.cr#L18" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="open(id:String,**options):IO-instance-method">
-      <div class="signature">
-        abstract 
-        def <strong>open</strong>(id : String, **options) : IO
-
-        <a class="method-permalink" href="#open(id:String,**options):IO-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>returns the remote file as an IO-like object</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/storage/base.cr#L12" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="upload(io:IO|UploadedFile,id:String,move=false,**options)-instance-method">
-      <div class="signature">
-        abstract 
-        def <strong>upload</strong>(io : IO | <a href="../../Shrine/UploadedFile.html">UploadedFile</a>, id : String, move = <span class="n">false</span>, **options)
-
-        <a class="method-permalink" href="#upload(io:IO%7CUploadedFile,id:String,move=false,**options)-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>uploads <code>io</code> to the location <code>id</code>, can accept upload options</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/storage/base.cr#L9" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="url(id:String,**options):String-instance-method">
-      <div class="signature">
-        abstract 
-        def <strong>url</strong>(id : String, **options) : String
-
-        <a class="method-permalink" href="#url(id:String,**options):String-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>returns URL to the remote file, can accept URL options</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/storage/base.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/uploaded_file.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>
