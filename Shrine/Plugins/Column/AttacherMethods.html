@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.8.2">
 <meta name="crystal_docs.project_version" content="master">
 <meta name="crystal_docs.project_name" content="shrine">
 
@@ -25,6 +26,11 @@
     <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
   </symbol>
 </svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
 <div class="sidebar">
   <div class="sidebar-header">
     <div class="search-box">
@@ -336,7 +342,7 @@
   </h2>
   
     
-      <a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/plugins/column.cr#L43" target="_blank">
+      <a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine/plugins/column.cr#L43" target="_blank">
         shrine/plugins/column.cr
       </a>
     
@@ -358,7 +364,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(column_serializer=self.class.shrine_class.plugin_settings.column[:column_serializer],**options)-class-method" class="signature"><strong>.new</strong>(column_serializer = <span class="k">self</span>.<span class="k">class</span>.shrine_class.plugin_settings.column[<span class="n">:column_serializer</span>], **options)</a>
+        <a href="#new%28column_serializer%3Dself.class.shrine_class.plugin_settings.column%5B%3Acolumn_serializer%5D%2C%2A%2Aoptions%29-class-method" class="signature"><strong>.new</strong>(column_serializer = <span class="k">self</span>.<span class="k">class</span>.shrine_class.plugin_settings.column[<span class="n">:column_serializer</span>], **options)</a>
         
           <div class="summary"><p>Allows overriding the default column serializer.</p></div>
         
@@ -381,28 +387,28 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#column_data:String?-instance-method" class="signature"><strong>#column_data</strong> : String?</a>
+        <a href="#column_data%3AString%7CNil-instance-method" class="signature"><strong>#column_data</strong> : String | Nil</a>
         
           <div class="summary"><p>Returns attacher data as a serialized string (JSON by default).</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#column_serializer:Shrine::Plugins::Column::BaseSerializer.class-instance-method" class="signature"><strong>#column_serializer</strong> : <span class="t">Shrine</span><span class="t">::</span><span class="t">Plugins</span><span class="t">::</span><span class="t">Column</span><span class="t">::</span><span class="t">BaseSerializer</span>.<span class="k">class</span></a>
+        <a href="#column_serializer%3AShrine%3A%3APlugins%3A%3AColumn%3A%3ABaseSerializer.class-instance-method" class="signature"><strong>#column_serializer</strong> : <span class="t">Shrine</span><span class="t">::</span><span class="t">Plugins</span><span class="t">::</span><span class="t">Column</span><span class="t">::</span><span class="t">BaseSerializer</span>.<span class="k">class</span></a>
         
           <div class="summary"><p>Column serializer object.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#load_column(data:String):UploadedFile-instance-method" class="signature"><strong>#load_column</strong>(data : String) : UploadedFile</a>
+        <a href="#load_column%28data%3AString%29%3AUploadedFile-instance-method" class="signature"><strong>#load_column</strong>(data : String) : UploadedFile</a>
         
           <div class="summary"><p>Loads attachment from column data.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#load_column(data:Nil):Nil-instance-method" class="signature"><strong>#load_column</strong>(data : Nil) : Nil</a>
+        <a href="#load_column%28data%3ANil%29%3ANil-instance-method" class="signature"><strong>#load_column</strong>(data : Nil) : Nil</a>
         
       </li>
     
@@ -431,7 +437,7 @@
         
         def self.<strong>new</strong>(column_serializer = <span class="k">self</span>.<span class="k">class</span>.shrine_class.plugin_settings.column[<span class="n">:column_serializer</span>], **options)
 
-        <a class="method-permalink" href="#new(column_serializer=self.class.shrine_class.plugin_settings.column[:column_serializer],**options)-class-method">#</a>
+        <a class="method-permalink" href="#new%28column_serializer%3Dself.class.shrine_class.plugin_settings.column%5B%3Acolumn_serializer%5D%2C%2A%2Aoptions%29-class-method">#</a>
       </div>
       
         <div class="doc">
@@ -442,7 +448,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/plugins/column.cr#L48" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine/plugins/column.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -461,25 +467,24 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="column_data:String?-instance-method">
+    <div class="entry-detail" id="column_data:String|Nil-instance-method">
       <div class="signature">
         
-        def <strong>column_data</strong> : String?
+        def <strong>column_data</strong> : String | Nil
 
-        <a class="method-permalink" href="#column_data:String?-instance-method">#</a>
+        <a class="method-permalink" href="#column_data%3AString%7CNil-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Returns attacher data as a serialized string (JSON by default).</p>
-
 <pre><code class="language-crystal">attacher.column_data <span class="c">#=&gt; &#39;{&quot;id&quot;:&quot;...&quot;,&quot;storage&quot;:&quot;...&quot;,&quot;metadata&quot;:{...}}&#39;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/plugins/column.cr#L68" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine/plugins/column.cr#L68" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -489,7 +494,7 @@
         
         def <strong>column_serializer</strong> : <span class="t">Shrine</span><span class="t">::</span><span class="t">Plugins</span><span class="t">::</span><span class="t">Column</span><span class="t">::</span><span class="t">BaseSerializer</span>.<span class="k">class</span>
 
-        <a class="method-permalink" href="#column_serializer:Shrine::Plugins::Column::BaseSerializer.class-instance-method">#</a>
+        <a class="method-permalink" href="#column_serializer%3AShrine%3A%3APlugins%3A%3AColumn%3A%3ABaseSerializer.class-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -500,7 +505,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/plugins/column.cr#L45" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine/plugins/column.cr#L45" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -510,22 +515,21 @@
         
         def <strong>load_column</strong>(data : String) : <a href="../../../Shrine/UploadedFile.html">UploadedFile</a>
 
-        <a class="method-permalink" href="#load_column(data:String):UploadedFile-instance-method">#</a>
+        <a class="method-permalink" href="#load_column%28data%3AString%29%3AUploadedFile-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Loads attachment from column data.</p>
-
-<pre><code class="language-crystal">attacher.file #=> nil
-attacher.load_column('{"id":"...","storage":"...","metadata":{...}}')
-attacher.file #=> #<Shrine::UploadedFile></code></pre>
+<pre><code class="language-crystal">attacher.file #=&gt; nil
+attacher.load_column(&#39;{&quot;id&quot;:&quot;...&quot;,&quot;storage&quot;:&quot;...&quot;,&quot;metadata&quot;:{...}}&#39;)
+attacher.file #=&gt; #&lt;Shrine::UploadedFile&gt;</code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/plugins/column.cr#L57" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine/plugins/column.cr#L57" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -535,13 +539,13 @@ attacher.file #=> #<Shrine::UploadedFile></code></pre>
         
         def <strong>load_column</strong>(data : Nil) : Nil
 
-        <a class="method-permalink" href="#load_column(data:Nil):Nil-instance-method">#</a>
+        <a class="method-permalink" href="#load_column%28data%3ANil%29%3ANil-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine/plugins/column.cr#L61" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine/plugins/column.cr#L61" target="_blank">View source</a>]
         
       </div>
     </div>

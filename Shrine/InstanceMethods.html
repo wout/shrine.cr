@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.8.2">
 <meta name="crystal_docs.project_version" content="master">
 <meta name="crystal_docs.project_name" content="shrine">
 
@@ -25,6 +26,11 @@
     <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
   </symbol>
 </svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
 <div class="sidebar">
   <div class="sidebar-header">
     <div class="search-box">
@@ -350,7 +356,7 @@
   </h2>
   
     
-      <a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L233" target="_blank">
+      <a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L233" target="_blank">
         shrine.cr
       </a>
     
@@ -372,7 +378,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(storage_key:String)-class-method" class="signature"><strong>.new</strong>(storage_key : String)</a>
+        <a href="#new%28storage_key%3AString%29-class-method" class="signature"><strong>.new</strong>(storage_key : String)</a>
         
       </li>
     
@@ -393,14 +399,14 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#generate_location(io:IO%7CUploadedFile,metadata,**options)-instance-method" class="signature"><strong>#generate_location</strong>(io : IO | UploadedFile, metadata, **options)</a>
+        <a href="#generate_location%28io%3AIO%7CUploadedFile%2Cmetadata%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#generate_location</strong>(io : IO | UploadedFile, metadata, **options)</a>
         
           <div class="summary"><p>Generates a unique location for the uploaded file, preserving the file extension.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#generate_uid(io)-instance-method" class="signature"><strong>#generate_uid</strong>(io)</a>
+        <a href="#generate_uid%28io%29-instance-method" class="signature"><strong>#generate_uid</strong>(io)</a>
         
           <div class="summary"><p>Generates a unique identifier that can be used for a location.</p></div>
         
@@ -414,19 +420,19 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#storage_key:String-instance-method" class="signature"><strong>#storage_key</strong> : String</a>
+        <a href="#storage_key%3AString-instance-method" class="signature"><strong>#storage_key</strong> : String</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#upload(io:IO%7CUploadedFile,**options)-instance-method" class="signature"><strong>#upload</strong>(io : IO | UploadedFile, **options)</a>
+        <a href="#upload%28io%3AIO%7CUploadedFile%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#upload</strong>(io : IO | UploadedFile, **options)</a>
         
           <div class="summary"><p>The main method for uploading files.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#warn(message)-instance-method" class="signature"><strong>#warn</strong>(message)</a>
+        <a href="#warn%28message%29-instance-method" class="signature"><strong>#warn</strong>(message)</a>
         
           <div class="summary"><p>Prints a warning to the logger.</p></div>
         
@@ -457,13 +463,13 @@
         
         def self.<strong>new</strong>(storage_key : String)
 
-        <a class="method-permalink" href="#new(storage_key:String)-class-method">#</a>
+        <a class="method-permalink" href="#new%28storage_key%3AString%29-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L236" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L236" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -487,7 +493,7 @@
         
         def <strong>generate_location</strong>(io : IO | <a href="../Shrine/UploadedFile.html">UploadedFile</a>, metadata, **options)
 
-        <a class="method-permalink" href="#generate_location(io:IO%7CUploadedFile,metadata,**options)-instance-method">#</a>
+        <a class="method-permalink" href="#generate_location%28io%3AIO%7CUploadedFile%2Cmetadata%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -500,7 +506,7 @@ location.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L269" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L269" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -510,7 +516,7 @@ location.</p>
         
         def <strong>generate_uid</strong>(io)
 
-        <a class="method-permalink" href="#generate_uid(io)-instance-method">#</a>
+        <a class="method-permalink" href="#generate_uid%28io%29-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -521,7 +527,7 @@ location.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L355" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L355" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -542,7 +548,7 @@ location.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L240" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L240" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -552,13 +558,13 @@ location.</p>
         
         def <strong>storage_key</strong> : String
 
-        <a class="method-permalink" href="#storage_key:String-instance-method">#</a>
+        <a class="method-permalink" href="#storage_key%3AString-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L234" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L234" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -568,7 +574,7 @@ location.</p>
         
         def <strong>upload</strong>(io : IO | <a href="../Shrine/UploadedFile.html">UploadedFile</a>, **options)
 
-        <a class="method-permalink" href="#upload(io:IO%7CUploadedFile,**options)-instance-method">#</a>
+        <a class="method-permalink" href="#upload%28io%3AIO%7CUploadedFile%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -577,17 +583,16 @@ location.</p>
 optional context hash (used internally by Shrine::Attacher). It calls
 user-defined #process, and afterwards it calls #store. The <code>io</code> is
 closed after upload.</p>
-
 <p>uploader.upload(io)
-  uploader.upload(io, metadata: { "foo" => "bar" })           # add metadata
-  uploader.upload(io, location: "path/to/file")               # specify location
-  uploader.upload(io, upload_options: { acl: "public-read" }) # add upload options</p>
+uploader.upload(io, metadata: { &quot;foo&quot; =&gt; &quot;bar&quot; })           # add metadata
+uploader.upload(io, location: &quot;path/to/file&quot;)               # specify location
+uploader.upload(io, upload_options: { acl: &quot;public-read&quot; }) # add upload options</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L253" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L253" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -597,7 +602,7 @@ closed after upload.</p>
         
         def <strong>warn</strong>(message)
 
-        <a class="method-permalink" href="#warn(message)-instance-method">#</a>
+        <a class="method-permalink" href="#warn%28message%29-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -608,7 +613,7 @@ closed after upload.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L274" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L274" target="_blank">View source</a>]
         
       </div>
     </div>

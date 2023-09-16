@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 1.0.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.8.2">
 <meta name="crystal_docs.project_version" content="master">
 <meta name="crystal_docs.project_name" content="shrine">
 
@@ -25,6 +26,11 @@
     <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
   </symbol>
 </svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
 <div class="sidebar">
   <div class="sidebar-header">
     <div class="search-box">
@@ -336,7 +342,7 @@
   </h2>
   
     
-      <a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L157" target="_blank">
+      <a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L157" target="_blank">
         shrine.cr
       </a>
     
@@ -362,65 +368,65 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#cache(io,**options)-instance-method" class="signature"><strong>#cache</strong>(io, **options)</a>
+        <a href="#cache%28io%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#cache</strong>(io, **options)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#find_storage(name:String)-instance-method" class="signature"><strong>#find_storage</strong>(name : String)</a>
+        <a href="#find_storage%28name%3AString%29-instance-method" class="signature"><strong>#find_storage</strong>(name : String)</a>
         
           <div class="summary"><p>Retrieves the storage under the given identifier (Symbol), raising Shrine::Error if the storage is missing.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#raise_if_missing_settings!-instance-method" class="signature"><strong>#raise_if_missing_settings!</strong></a>
+        <a href="#raise_if_missing_settings%21-instance-method" class="signature"><strong>#raise_if_missing_settings!</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#store(io,**options)-instance-method" class="signature"><strong>#store</strong>(io, **options)</a>
+        <a href="#store%28io%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#store</strong>(io, **options)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#upload(io,storage,**options)-instance-method" class="signature"><strong>#upload</strong>(io, storage, **options)</a>
+        <a href="#upload%28io%2Cstorage%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#upload</strong>(io, storage, **options)</a>
         
           <div class="summary"><p>Uploads the file to the specified storage.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#uploaded_file(hash:Hash(String,String%7CUploadedFile::MetadataType))-instance-method" class="signature"><strong>#uploaded_file</strong>(hash : Hash(String, String | UploadedFile::MetadataType))</a>
+        <a href="#uploaded_file%28hash%3AHash%28String%2CString%7CUploadedFile%3A%3AMetadataType%29%29-instance-method" class="signature"><strong>#uploaded_file</strong>(hash : Hash(String, String | UploadedFile::MetadataType))</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#uploaded_file(json:String)-instance-method" class="signature"><strong>#uploaded_file</strong>(json : String)</a>
+        <a href="#uploaded_file%28json%3AString%29-instance-method" class="signature"><strong>#uploaded_file</strong>(json : String)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#uploaded_file(object:UploadedFile)-instance-method" class="signature"><strong>#uploaded_file</strong>(object : UploadedFile)</a>
+        <a href="#uploaded_file%28object%3AUploadedFile%29-instance-method" class="signature"><strong>#uploaded_file</strong>(object : UploadedFile)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#warn(message)-instance-method" class="signature"><strong>#warn</strong>(message)</a>
+        <a href="#warn%28message%29-instance-method" class="signature"><strong>#warn</strong>(message)</a>
         
           <div class="summary"><p>Prints a warning to the logger.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#with_file(io:IO,&)-instance-method" class="signature"><strong>#with_file</strong>(io : IO, &)</a>
+        <a href="#with_file%28io%3AIO%2C%26%29-instance-method" class="signature"><strong>#with_file</strong>(io : IO, &)</a>
         
           <div class="summary"><p>Temporarily converts an IO-like object into a file.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#with_file(uploaded_file:UploadedFile,&)-instance-method" class="signature"><strong>#with_file</strong>(uploaded_file : UploadedFile, &)</a>
+        <a href="#with_file%28uploaded_file%3AUploadedFile%2C%26%29-instance-method" class="signature"><strong>#with_file</strong>(uploaded_file : UploadedFile, &)</a>
         
       </li>
     
@@ -453,13 +459,13 @@
         
         def <strong>cache</strong>(io, **options)
 
-        <a class="method-permalink" href="#cache(io,**options)-instance-method">#</a>
+        <a class="method-permalink" href="#cache%28io%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L176" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L176" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -469,7 +475,7 @@
         
         def <strong>find_storage</strong>(name : String)
 
-        <a class="method-permalink" href="#find_storage(name:String)-instance-method">#</a>
+        <a class="method-permalink" href="#find_storage%28name%3AString%29-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -480,7 +486,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L163" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L163" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -490,13 +496,13 @@
         
         def <strong>raise_if_missing_settings!</strong>
 
-        <a class="method-permalink" href="#raise_if_missing_settings!-instance-method">#</a>
+        <a class="method-permalink" href="#raise_if_missing_settings%21-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L184" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L184" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -506,13 +512,13 @@
         
         def <strong>store</strong>(io, **options)
 
-        <a class="method-permalink" href="#store(io,**options)-instance-method">#</a>
+        <a class="method-permalink" href="#store%28io%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L180" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L180" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -522,20 +528,19 @@
         
         def <strong>upload</strong>(io, storage, **options)
 
-        <a class="method-permalink" href="#upload(io,storage,**options)-instance-method">#</a>
+        <a class="method-permalink" href="#upload%28io%2Cstorage%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Uploads the file to the specified storage. It delegates to <code>Shrine#upload</code>.</p>
-
 <pre><code class="language-crystal"><span class="t">Shrine</span>.upload(io, <span class="n">:store</span>) <span class="c"># =&gt; #&lt;Shrine::UploadedFile&gt;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L172" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L172" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -545,13 +550,13 @@
         
         def <strong>uploaded_file</strong>(hash : Hash(String, String | <a href="../Shrine/UploadedFile/MetadataType.html">UploadedFile::MetadataType</a>))
 
-        <a class="method-permalink" href="#uploaded_file(hash:Hash(String,String%7CUploadedFile::MetadataType))-instance-method">#</a>
+        <a class="method-permalink" href="#uploaded_file%28hash%3AHash%28String%2CString%7CUploadedFile%3A%3AMetadataType%29%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L188" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L188" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -561,13 +566,13 @@
         
         def <strong>uploaded_file</strong>(json : String)
 
-        <a class="method-permalink" href="#uploaded_file(json:String)-instance-method">#</a>
+        <a class="method-permalink" href="#uploaded_file%28json%3AString%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L192" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L192" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -577,13 +582,13 @@
         
         def <strong>uploaded_file</strong>(object : <a href="../Shrine/UploadedFile.html">UploadedFile</a>)
 
-        <a class="method-permalink" href="#uploaded_file(object:UploadedFile)-instance-method">#</a>
+        <a class="method-permalink" href="#uploaded_file%28object%3AUploadedFile%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L196" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L196" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -593,7 +598,7 @@
         
         def <strong>warn</strong>(message)
 
-        <a class="method-permalink" href="#warn(message)-instance-method">#</a>
+        <a class="method-permalink" href="#warn%28message%29-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -604,7 +609,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L228" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L228" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -614,7 +619,7 @@
         
         def <strong>with_file</strong>(io : IO, &)
 
-        <a class="method-permalink" href="#with_file(io:IO,&)-instance-method">#</a>
+        <a class="method-permalink" href="#with_file%28io%3AIO%2C%26%29-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -623,14 +628,13 @@
 is already a file, it simply yields it to the block, otherwise it copies
 IO content into a Tempfile object which is then yielded and afterwards
 deleted.</p>
-
 <pre><code class="language-crystal"><span class="t">Shrine</span>.with_file(io) { <span class="o">|</span>file<span class="o">|</span> file.path }</code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L209" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L209" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -640,13 +644,13 @@ deleted.</p>
         
         def <strong>with_file</strong>(uploaded_file : <a href="../Shrine/UploadedFile.html">UploadedFile</a>, &)
 
-        <a class="method-permalink" href="#with_file(uploaded_file:UploadedFile,&)-instance-method">#</a>
+        <a class="method-permalink" href="#with_file%28uploaded_file%3AUploadedFile%2C%26%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/shrine.cr/blob/afe92db7a3191e479df0f1bc55f812ba16711cb4/src/shrine.cr#L221" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/shrine.cr/blob/da3c080b72469b0ce1b236f1574f4b90d249ef46/src/shrine.cr#L221" target="_blank">View source</a>]
         
       </div>
     </div>
