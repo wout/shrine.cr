@@ -27,8 +27,10 @@ development_dependencies:
   fastimage:
     github: jetrockets/fastimage.cr
     version: ~> 1.2.0
-  spectator:
-    gitlab: arctic-fox/spectator
+  # spectator:
+  #   gitlab: arctic-fox/spectator
   webmock:
     github: manastech/webmock.cr
     branch: master
+  spec_mirror:
+    github: wout/spec_mirror.cr
