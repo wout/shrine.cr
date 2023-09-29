@@ -1,4 +1,4 @@
-require "spectator"
+require "spec"
 require "webmock"
 
 require "../src/*"
@@ -6,9 +6,8 @@ require "./support/file_helpers"
 require "./support/shrine_helpers"
 require "./support/have_permissions_matcher"
 
-Spectator.configure do |config|
-  config.randomize # Randomize test order.
-end
+include ShrineHelpers
+include FileHelpers
 
 Shrine.configure do |config|
   config.storages["cache"] = Shrine::Storage::Memory.new
