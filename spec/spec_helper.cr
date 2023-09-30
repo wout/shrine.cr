@@ -9,6 +9,8 @@ require "./support/have_permissions_matcher"
 include ShrineHelpers
 include FileHelpers
 
+alias TestMetadata = Hash(String, Int16 | Int32 | Int64 | String | UInt16 | UInt32 | UInt64 | Nil)
+
 Shrine.configure do |config|
   config.storages["cache"] = Shrine::Storage::Memory.new
   config.storages["store"] = Shrine::Storage::Memory.new
