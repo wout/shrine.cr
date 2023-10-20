@@ -137,194 +137,193 @@ describe Shrine::UploadedFile do
     end
   end
 
-  # describe "#exists?" do
-  #   it "delegates to underlying storage" do
-  #     uploaded_file = uploader.upload(fakeio)
-  #     uploaded_file.exists?.should be_true
+  describe "#exists?" do
+    it "delegates to underlying storage" do
+      uploaded_file.exists?.should be_false
+      uploaded_file = uploader.upload(fakeio)
+      uploaded_file.exists?.should be_true
+    end
+  end
 
-  #     subject.exists?.should be_false
-  #   end
-  # end
+  describe "#open" do
+    it "returns the underlying IO if no block given" do
+      uploaded_file = uploader.upload(fakeio)
 
-  # describe "#open" do
-  #   it "returns the underlying IO if no block given" do
-  #     uploaded_file = uploader.upload(fakeio)
+      uploaded_file.open.should be_a(IO)
+      uploaded_file.open.closed?.should be_false
+    end
 
-  #     uploaded_file.open.should be_an(IO)
-  #     uploaded_file.open.closed?.should be_false
-  #   end
+    it "closes the previous IO" do
+      uploaded_file = uploader.upload(fakeio)
+      io1 = uploaded_file.open
+      io2 = uploaded_file.open
 
-  #   it "closes the previous IO" do
-  #     uploaded_file = uploader.upload(fakeio)
-  #     io1 = uploaded_file.open
-  #     io2 = uploaded_file.open
+      io1.should_not eq(io2)
+      io1.closed?.should be_true
+      io2.closed?.should be_false
+    end
 
-  #     io1.should_not eq(io2)
-  #     io1.closed?.should be_true
-  #     io2.closed?.should be_false
-  #   end
+    it "yields to the block if it's given" do
+      uploaded_file = uploader.upload(fakeio)
 
-  #   it "yields to the block if it's given" do
-  #     uploaded_file = uploader.upload(fakeio)
+      called = false
+      uploaded_file.open { called = true }
+      called.should be_true
+    end
 
-  #     called = false
-  #     uploaded_file.open { called = true }
-  #     called.should be_true
-  #   end
+    it "yields the opened IO" do
+      uploaded_file = uploader.upload(fakeio("file"))
+      uploaded_file.open do |io|
+        io = io.as(IO)
 
-  #   it "yields the opened IO" do
-  #     uploaded_file = uploader.upload(fakeio("file"))
-  #     uploaded_file.open do |io|
-  #       io = io.not_nil!
+        io.should be_a(IO)
+        io.gets_to_end.should eq("file")
+      end
+    end
 
-  #       io.should be_an(IO)
-  #       io.gets_to_end.should eq("file")
-  #     end
-  #   end
+    it "makes itself open as well" do
+      uploaded_file = uploader.upload(fakeio)
+      uploaded_file.open do |io|
+        io.should eq(uploaded_file.io)
+      end
+    end
 
-  #   it "makes itself open as well" do
-  #     uploaded_file = uploader.upload(fakeio)
-  #     uploaded_file.open do |io|
-  #       io.should eq(uploaded_file.io)
-  #     end
-  #   end
+    it "closes the IO after block finishes" do
+      uploaded_file = uploader.upload(fakeio)
 
-  #   it "closes the IO after block finishes" do
-  #     uploaded_file = uploader.upload(fakeio)
+      expect_raises(IO::Error) do
+        dup = IO::Memory.new
+        uploaded_file.open { |io| dup = io.as(IO) }
+        dup.gets_to_end
+      end
+    end
 
-  #     dup = IO::Memory.new
-  #     uploaded_file.open { |io| dup = io.not_nil! }
-  #     ->{ dup.gets_to_end }.should raise_error(IO::Error)
-  #   end
+    it "resets the uploaded file ready to be opened again" do
+      uploaded_file = uploader.upload(fakeio("file"))
+      uploaded_file.open { }
 
-  #   it "resets the uploaded file ready to be opened again" do
-  #     uploaded_file = uploader.upload(fakeio("file"))
-  #     uploaded_file.open { }
+      uploaded_file.gets_to_end.should eq("file")
+    end
 
-  #     uploaded_file.gets_to_end.should eq("file")
-  #   end
+    it "opens even if it was closed" do
+      uploaded_file = uploader.upload(fakeio("file"))
+      uploaded_file.gets_to_end
+      uploaded_file.close
+      uploaded_file.open { |io|
+        io.as(IO).gets_to_end.should eq("file")
+      }
+    end
 
-  #   it "opens even if it was closed" do
-  #     uploaded_file = uploader.upload(fakeio("file"))
-  #     uploaded_file.gets_to_end
-  #     uploaded_file.close
-  #     uploaded_file.open { |io|
-  #       io.not_nil!.gets_to_end.should eq("file")
-  #     }
-  #   end
+    it "closes the file even if an error has occurred" do
+      uploaded_file = uploader.upload(fakeio)
+      dup = IO::Memory.new
 
-  #   it "closes the file even if an error has occurred" do
-  #     uploaded_file = uploader.upload(fakeio)
-  #     dup = IO::Memory.new
+      expect_raises(Exception) do
+        uploaded_file.open do |io|
+          dup = io.as(IO)
+          raise "error occurred"
+        end
+      end
 
-  #     ->{
-  #       uploaded_file.open do |io|
-  #         dup = io.not_nil!
-  #         raise "error occurred"
-  #       end
-  #     }.should raise_error(Exception)
+      dup.closed?.should be_true
+    end
+  end
 
-  #     dup.closed?.should be_true
-  #   end
-  # end
+  describe "#download" do
+    it "downloads file content to a Tempfile" do
+      uploaded_file = uploader.upload(fakeio("file"))
+      downloaded = uploaded_file.download
 
-  # describe "#download" do
-  #   it "downloads file content to a Tempfile" do
-  #     uploaded_file = uploader.upload(fakeio("file"))
-  #     downloaded = uploaded_file.download
+      downloaded.should be_a(File)
+      downloaded.closed?.should be_false
+      downloaded.gets_to_end.should eq("file")
+    end
 
-  #     downloaded.should be_a(File)
-  #     downloaded.closed?.should be_false
-  #     downloaded.gets_to_end.should eq("file")
-  #   end
+    it "applies extension from #id" do
+      uploaded_file = uploader.upload(fakeio, location: "foo.jpg")
 
-  #   it "applies extension from #id" do
-  #     uploaded_file = uploader.upload(fakeio, location: "foo.jpg")
+      uploaded_file.download.path.should match(/\.jpg$/)
+    end
 
-  #     uploaded_file.download.path.should match(/\.jpg$/)
-  #   end
+    it "applies extension from #original_filename" do
+      uploaded_file = uploader.upload(fakeio(filename: "foo.jpg"), location: "foo")
 
-  #   it "applies extension from #original_filename" do
-  #     uploaded_file = uploader.upload(fakeio(filename: "foo.jpg"), location: "foo")
+      uploaded_file.download.path.should match(/\.jpg$/)
+    end
 
-  #     uploaded_file.download.path.should match(/\.jpg$/)
-  #   end
+    it "yields the tempfile if a block is given" do
+      uploaded_file = uploader.upload(fakeio)
 
-  #   it "yields the tempfile if a block is given" do
-  #     uploaded_file = uploader.upload(fakeio)
+      uploaded_file.download do |tempfile|
+        block = tempfile
 
-  #     uploaded_file.download do |tempfile|
-  #       block = tempfile
+        block.should be_a(File)
+      end
+    end
 
-  #       block.should be_a(File)
-  #     end
-  #   end
+    it "returns the block return value" do
+      uploaded_file = uploader.upload(fakeio)
 
-  #   it "returns the block return value" do
-  #     uploaded_file = uploader.upload(fakeio)
+      result = uploaded_file.download { |_tempfile| "result" }
+      result.should eq("result")
+    end
 
-  #     result = uploaded_file.download { |_tempfile| "result" }
-  #     result.should eq("result")
-  #   end
+    it "closes and deletes the tempfile after the block" do
+      uploaded_file = uploader.upload(fakeio)
 
-  #   it "closes and deletes the tempfile after the block" do
-  #     uploaded_file = uploader.upload(fakeio)
+      tempfile = uploaded_file.download do |_tempfile|
+        _tempfile.closed?.should be_false
+        _tempfile
+      end
 
-  #     tempfile = uploaded_file.download do |_tempfile|
-  #       _tempfile.closed?.should be_false
-  #       _tempfile
-  #     end
+      tempfile.closed?.should be_true
+      File.exists?(tempfile.path).should be_false
+    end
+  end
 
-  #     tempfile.closed?.should be_true
-  #     File.exists?(tempfile.path).should be_false
-  #   end
-  # end
+  describe "#stream" do
+    it "opens and closes the file after streaming if it was not open" do
+      uploaded_file = uploader.upload(fakeio("content"))
+      uploaded_file.stream(destination = IO::Memory.new)
 
-  # describe "#stream" do
-  #   it "opens and closes the file after streaming if it was not open" do
-  #     uploaded_file = uploader.upload(fakeio("content"))
-  #     uploaded_file.stream(destination = IO::Memory.new)
+      destination.to_s.should eq("content")
+      uploaded_file.opened?.should be_false
+    end
+  end
 
-  #     destination.to_s.should eq("content")
-  #     uploaded_file.opened?.should be_false
-  #   end
-  # end
+  describe "#replace" do
+    it "uploads another file to the same location" do
+      uploaded_file = uploader.upload(fakeio("file"))
+      new_uploaded_file = uploaded_file.replace(fakeio("replaced"))
 
-  # describe "#replace" do
-  #   it "uploads another file to the same location" do
-  #     uploaded_file = uploader.upload(fakeio("file"))
-  #     new_uploaded_file = uploaded_file.replace(fakeio("replaced"))
+      new_uploaded_file.id.should eq(uploaded_file.id)
+      new_uploaded_file.gets_to_end.should eq("replaced")
+      new_uploaded_file.size.should eq("replaced".size)
+    end
+  end
 
-  #     new_uploaded_file.id.should eq(uploaded_file.id)
-  #     new_uploaded_file.gets_to_end.should eq("replaced")
-  #     new_uploaded_file.size.should eq("replaced".size)
-  #   end
-  # end
+  describe "#delete" do
+    it "delegates to underlying storage" do
+      uploaded_file = uploader.upload(fakeio)
+      uploaded_file.delete
 
-  # describe "#delete" do
-  #   it "delegates to underlying storage" do
-  #     uploaded_file = uploader.upload(fakeio)
-  #     uploaded_file.delete
+      uploaded_file.exists?.should be_false
+    end
+  end
 
-  #     uploaded_file.exists?.should be_false
-  #   end
-  # end
+  describe "#data" do
+    metadata = TestMetadata{"foo" => "bar"}
 
-  # describe "#data" do
-  #   metadata = {
-  #     "foo" => "bar",
-  #   }
-
-  #   it "returns uploaded file data hash" do
-  #     uploaded_file.data.should eq(
-  #       {
-  #         "id"          => id,
-  #         "storage_key" => "cache",
-  #         "metadata"    => metadata,
-  #       }
-  #     )
-  #   end
-  # end
+    it "returns uploaded file data hash" do
+      uploaded_file("foo", metadata).data.should eq(
+        {
+          "id"          => "foo",
+          "storage_key" => "cache",
+          "metadata"    => metadata,
+        }
+      )
+    end
+  end
 end
 
 private def uploaded_file(
@@ -343,9 +342,9 @@ private def test_metadata(
   mime_type : String? = nil,
   size : String | Int? = nil
 )
-  TestMetadata.new.merge({
+  TestMetadata{
     "filename"  => filename,
     "mime_type" => mime_type,
     "size"      => size,
-  })
+  }
 end
